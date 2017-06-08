@@ -325,27 +325,64 @@
                                 </div>
                                 <!-- /input-group -->
                             </li>
+
+                            <!-- Aqui el menu lateral -->
                             <li>
                                 <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
+                                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Administracion<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="flot.html">Flot Charts</a>
+                                        <a href="Contro">Empleados</a>
                                     </li>
                                     <li>
-                                        <a href="morris.html">Morris.js Charts</a>
+                                        <a href="morris.html">Departamentos</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Puestos</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Tipos de Ingresos</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Deducciones</a>
+                                    </li>
+                                    <%-- Especial para la seguridad --%>
+                                    <li>
+                                        <a href="#">Usuarios</a>
                                     </li>
                                 </ul>
                                 <!-- /.nav-second-level -->
                             </li>
                             <li>
-                                <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
+                                <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Consultas<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="Contro">Empleados</a>
+                                    </li>
+                                    <li>
+                                        <a href="morris.html">Departamentos</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Puestos</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Tipos de Ingresos</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Deducciones</a>
+                                    </li>
+                                    <%-- Especial para la seguridad --%>
+                                    <li>
+                                        <a href="#">Usuarios</a>
+                                    </li>
+                                </ul>
                             </li>
                             <li>
-                                <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
+                                <a href="tables.html"><i class="fa fa-table fa-fw"></i> Reportes</a>
                             </li>
+                            <%-- 
                             <li>
                                 <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
@@ -370,6 +407,7 @@
                                 </ul>
                                 <!-- /.nav-second-level -->
                             </li>
+                            
                             <li>
                                 <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
@@ -412,6 +450,7 @@
                                 </ul>
                                 <!-- /.nav-second-level -->
                             </li>
+                            --%>
                             <%-- Aqui el contenido --%>
                             <jsp:invoke fragment="side"/>
                             <%-- Aqui el contenido --%>
@@ -451,7 +490,7 @@
 
         <!-- Custom Theme JavaScript -->
         <script src="${sbAdmin2JS}"></script>
-        
+
         <!-- Custom JavaScript -->
         <jsp:invoke fragment="scripts" />
 

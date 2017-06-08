@@ -8,24 +8,6 @@
         <h1>El Header</h1>
     </jsp:attribute>
 
-    <jsp:attribute name="side">
-        <li>
-            <a href="#">El Side Menu</a>
-            <ul class="nav nav-second-level">
-                <li>
-                    <a href="#">Desde index</a>
-                </li>
-                <li>
-                    <a href="#">Desde index</a>
-                </li>
-            </ul>
-        </li>
-    </jsp:attribute>
-
-    <jsp:attribute name="footer">
-        <p>El Footer</p>
-    </jsp:attribute>
-
     <jsp:attribute name="styles">
         <!--Agregar hojas de estilo-->
     </jsp:attribute>
