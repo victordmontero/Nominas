@@ -5,7 +5,7 @@
 <t:layout>
 
     <jsp:attribute name="header">
-        <h1>El Header</h1>
+<!--        <h1>El Header</h1>-->
     </jsp:attribute>
 
     <jsp:attribute name="styles">

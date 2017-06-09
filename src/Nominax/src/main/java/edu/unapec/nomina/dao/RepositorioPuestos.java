@@ -6,7 +6,6 @@
 package edu.unapec.nomina.dao;
 
 import edu.unapec.nomina.modelos.Puestos;
-import java.math.BigDecimal;
 import java.util.List;
 import org.hibernate.*;
 
@@ -48,7 +47,24 @@ public class RepositorioPuestos implements IRepositorio<Puestos>{
     }
 
     public Puestos ObtenerUno(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String hql = String.format("from Puestos where IdPuesto = %d", id);
+        Session session = sessionFactory.openSession();
+        Query query = session.createQuery(hql);
+        query.setMaxResults(1);
+        Puestos puesto = (Puestos)query.uniqueResult();
+        session.close();
+        return puesto;
     }
+
+    public void Editar(Puestos entidad) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+        session.update(entidad);
+        tx.commit();
+        session.close();
+    }
+
+    
+    
     
 }

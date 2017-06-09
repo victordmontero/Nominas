@@ -97,7 +97,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">SB Admin v2.0</a>
+                    <a class="navbar-brand" href="/Nominax/">Nominax</a>
                 </div>
                 <!-- /.navbar-header -->
 
@@ -340,7 +340,7 @@
                                         <a href="morris.html">Departamentos</a>
                                     </li>
                                     <li>
-                                        <a href="#">Puestos</a>
+                                        <a href="/Nominax/puestos/listar">Puestos</a>
                                     </li>
                                     <li>
                                         <a href="#">Tipos de Ingresos</a>
