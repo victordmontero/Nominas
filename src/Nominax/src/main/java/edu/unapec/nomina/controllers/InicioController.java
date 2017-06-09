@@ -1,5 +1,9 @@
 package edu.unapec.nomina.controllers;
 
+import edu.unapec.nomina.modelos.Puestos;
+import edu.unapec.nomina.*;
+import edu.unapec.nomina.dao.IRepositorio;
+import java.math.BigDecimal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,12 +11,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class InicioController {
 
+    IRepositorio<Puestos> repo;
+
+    public InicioController(IRepositorio<Puestos> repo) {
+        this.repo = repo;
+    }
+    
     @RequestMapping(value = "/")
     public String Inicio(Model model) {
-
-        model.addAttribute("titulo", "Titulo");
+        model.addAttribute("titulo", "Index");
         model.addAttribute("mensaje", "Mensaje");
-
+        
         return "index";
     }
 

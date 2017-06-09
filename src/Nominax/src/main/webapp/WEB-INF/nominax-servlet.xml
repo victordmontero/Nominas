@@ -25,30 +25,35 @@
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
           destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost:3306/nominas" />
+        <property name="url" value="jdbc:mysql://localhost:3306/Nominas" />
         <property name="username" value="root" />
         <property name="password" value="mysql" />
     </bean>
 
-    <!--<bean id="hibernate3AnnotatedSessionFactory"
-          class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+    <bean id="hibernate3SessionFactory"
+          class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <property name="annotatedClasses">
+        <property name="mappingResources">
             <list>
-                <value>edu.unapec.nomina.modelos.Persona</value>
+                <value>/edu/unapec/nomina/modelos/Departamentos.hbm.xml</value>
+                <value>/edu/unapec/nomina/modelos/Puestos.hbm.xml</value>
+                <value>/edu/unapec/nomina/modelos/Empleados.hbm.xml</value>
+                <value>/edu/unapec/nomina/modelos/Empleadodepartamento.hbm.xml</value>
+                <value>/edu/unapec/nomina/modelos/Transacciones.hbm.xml</value>
+                <value>/edu/unapec/nomina/modelos/Tipoingresodeduccion.hbm.xml</value>
             </list>
         </property>
         <property name="hibernateProperties">
-            <props>
-                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-                <prop key="hibernate.current_session_context_class">thread</prop>
-                <prop key="hibernate.show_sql">false</prop>
-            </props>
+            <value>hibernate.dialect=org.hibernate.dialect.MySQLDialect</value>
         </property>
-    </bean>-->
+    </bean>
+    
+    <bean id="repoPuestos" class="edu.unapec.nomina.dao.RepositorioPuestos">
+        <constructor-arg name="sf" ref="hibernate3SessionFactory" />
+    </bean>
 
     <bean id="inicioController" class="edu.unapec.nomina.controllers.InicioController" >
-        <constructor-arg name="dao" ref="personaDao"/>         
+        <constructor-arg name="repo" ref="repoPuestos"/>
         <!--<property name="personaDao" ref="personaDao" />-->
     </bean>
 
