@@ -1,7 +1,7 @@
 <%-- 
-    Document   : guardar
-    Created on : Jun 9, 2017, 9:36:54 AM
-    Author     : Phenom
+    Document   : editar
+    Created on : Jun 12, 2017, 12:09:20 PM
+    Author     : phenom
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -12,7 +12,7 @@
     <jsp:body>
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Nuevo puesto</h1>  
+                <h1 class="page-header">Editando ${puesto.descripcion}</h1>  
             </div>
         </div>
 
@@ -20,10 +20,11 @@
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Nuevo Puesto
+                        Editando ${puesto.descripcion}
                     </div>
                     <div class="panel-body">
-                        <mvc:form modelAttribute="puesto" action="guardar" method="POST">
+                        <mvc:form modelAttribute="puesto" action="/Nominax/puestos/editar" method="POST">
+                            <input type="hidden" name="idPuesto" value="${puesto.idPuesto}"/>
                             <div class="row">
                                 <div class="form-group col-lg-12">
                                     <mvc:label path="descripcion">Descripci&oacute;n</mvc:label>

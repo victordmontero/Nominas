@@ -17,6 +17,6 @@
     </jsp:attribute>
 
     <jsp:body>
-        <h1 class="page-header">El Body</h1>
+        <h1 class="page-header">${pageContext.request.getSession().getServletContext()}</h1>
     </jsp:body>
 </t:layout>

@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
- * @author Phenom
+ * @author 20150569
  */
 @Controller
 @RequestMapping(value = "/puestos")
@@ -24,25 +24,25 @@ public class PuestoController extends CRUDController<Puestos> {
     public PuestoController(IRepositorio<Puestos> repositorio) {
         super(repositorio);
     }
-    
+
     @RequestMapping(value = "/listar")
-    public ModelAndView listar(){
+    public ModelAndView listar() {
         ModelAndView mv = new ModelAndView();
-        mv.addObject("puestos",repositorio.ObtenerTodos());
+        mv.addObject("puestos", repositorio.ObtenerTodos());
         mv.setViewName("puestos/listar");
         return mv;
     }
 
     @RequestMapping(value = "/guardar")
-    public ModelAndView guardar(){
+    public ModelAndView guardar() {
         ModelAndView mv = new ModelAndView();
-        mv.addObject("puesto",new Puestos());
-        String[] riesgos = {"Alto","Medio","Bajo"};
-        mv.addObject("riesgos",riesgos);
+        mv.addObject("puesto", new Puestos());
+        String[] riesgos = {"Alto", "Medio", "Bajo"};
+        mv.addObject("riesgos", riesgos);
         mv.setViewName("puestos/guardar");
         return mv;
     }
-    
+
     @RequestMapping(value = "/guardar", method = RequestMethod.POST)
     public ModelAndView guardar(Puestos puesto) {
         ModelAndView mv = new ModelAndView();
@@ -50,13 +50,23 @@ public class PuestoController extends CRUDController<Puestos> {
         mv.setViewName("redirect:listar");
         return mv;
     }
-    
-    @RequestMapping(value = "/editar/{idPuesto}", method = RequestMethod.GET)
+
+    @RequestMapping(value = "/editar/{idPuesto}")
     public ModelAndView editar(@PathVariable int idPuesto) {
         ModelAndView mv = new ModelAndView();
         Puestos puesto = repositorio.ObtenerUno(idPuesto);
-        mv.addObject("puesto",puesto);
+        mv.addObject("puesto", puesto);
+        String[] riesgos = {"Alto", "Medio", "Bajo"};
+        mv.addObject("riesgos", riesgos);
         mv.setViewName("puestos/editar");
+        return mv;
+    }
+
+    @RequestMapping(value = "/editar", method = RequestMethod.POST)
+    public ModelAndView editar(Puestos puesto) {
+        ModelAndView mv = new ModelAndView();
+        repositorio.Editar(puesto);
+        mv.setViewName("redirect:listar");
         return mv;
     }
 }
