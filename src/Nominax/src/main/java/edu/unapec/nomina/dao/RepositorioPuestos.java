@@ -13,12 +13,10 @@ import org.hibernate.*;
  *
  * @author Phenom
  */
-public class RepositorioPuestos implements IRepositorio<Puestos>{
-    
-    SessionFactory sessionFactory;
-    
-    public RepositorioPuestos(SessionFactory sf){
-        sessionFactory = sf;
+public class RepositorioPuestos extends RepositorioBase<Puestos>{
+
+    public RepositorioPuestos(SessionFactory sf) {
+        super(sf);
     }
     
     public void Guardar(Puestos entidad) { 
@@ -39,15 +37,13 @@ public class RepositorioPuestos implements IRepositorio<Puestos>{
 
     public List<Puestos> ObtenerTodos() {
         Session session = sessionFactory.openSession();
-        Transaction tx = session.beginTransaction();
-        List<Puestos> lista = session.createQuery("from Puestos").list();
+        List<Puestos> lista = session.createQuery("from Puestos where Estado = 1").list();
         session.close();
-        
         return lista;
     }
 
     public Puestos ObtenerUno(int id) {
-        String hql = String.format("from Puestos where IdPuesto = %d", id);
+        String hql = String.format("from Puestos where IdPuesto = %d and Estado = 1", id);
         Session session = sessionFactory.openSession();
         Query query = session.createQuery(hql);
         query.setMaxResults(1);

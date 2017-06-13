@@ -5,7 +5,7 @@
 <t:layout>
 
     <jsp:attribute name="header">
-<!--        <h1>El Header</h1>-->
+        <!--<h1>El Header</h1>-->
     </jsp:attribute>
 
     <jsp:attribute name="styles">
@@ -17,6 +17,6 @@
     </jsp:attribute>
 
     <jsp:body>
-        <h1 class="page-header">${pageContext.request.getSession().getServletContext()}</h1>
+        <h1 class="page-header">${pageContext.request.localName}</h1>
     </jsp:body>
 </t:layout>
