@@ -51,9 +51,18 @@
     <bean id="repoPuestos" class="edu.unapec.nomina.dao.RepositorioPuestos">
         <constructor-arg name="sf" ref="hibernate3SessionFactory" />
     </bean>
+    
+    <bean id="repoEmpleados" class="edu.unapec.nomina.dao.RepositorioEmpleados">
+        <constructor-arg name="sf" ref="hibernate3SessionFactory" />
+    </bean>
 
     <bean id="puestoController" class="edu.unapec.nomina.controllers.PuestoController" >
         <constructor-arg name="repositorio" ref="repoPuestos"/>
+        <!--<property name="personaDao" ref="personaDao" />-->
+    </bean>
+    
+    <bean id="empleadoController" class="edu.unapec.nomina.controllers.EmpleadoController" >
+        <constructor-arg name="repositorio" ref="repoEmpleados"/>
         <!--<property name="personaDao" ref="personaDao" />-->
     </bean>
 

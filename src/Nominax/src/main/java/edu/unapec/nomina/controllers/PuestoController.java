@@ -45,6 +45,7 @@ public class PuestoController extends CRUDController<Puestos> {
 
     @RequestMapping(value = "/guardar", method = RequestMethod.POST)
     public ModelAndView guardar(Puestos puesto) {
+        puesto.setEstado(true);
         ModelAndView mv = new ModelAndView();
         repositorio.Guardar(puesto);
         mv.setViewName("redirect:listar");
@@ -67,6 +68,15 @@ public class PuestoController extends CRUDController<Puestos> {
         ModelAndView mv = new ModelAndView();
         repositorio.Editar(puesto);
         mv.setViewName("redirect:listar");
+        return mv;
+    }
+
+    @RequestMapping(value = "/eliminar/{idPuesto}")
+    public ModelAndView eliminar(@PathVariable int idPuesto) {
+        ModelAndView mv = new ModelAndView();
+        Puestos puesto = repositorio.ObtenerUno(idPuesto);
+        repositorio.Eliminar(puesto);
+        mv.setViewName("redirect:/puestos/listar");
         return mv;
     }
 }

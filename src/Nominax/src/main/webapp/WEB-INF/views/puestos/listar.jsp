@@ -54,7 +54,9 @@
                                         <td>${p.salarioMin}</td>
                                         <td>${p.salarioMax}</td>
                                         <td>${p.riesgo}</td>
-                                        <th></th>
+                                        <th>
+                                            <a href="/Nominax/puestos/eliminar/${p.idPuesto}"><i class="fa fa-trash"></i></a>
+                                        </th>
                                     </tr>
                                 </c:forEach>
                             </tbody>

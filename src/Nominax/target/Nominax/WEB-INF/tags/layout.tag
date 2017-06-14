@@ -334,7 +334,7 @@
                                 <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Administracion<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="Contro">Empleados</a>
+                                        <a href="/Nominax/empleados/listar">Empleados</a>
                                     </li>
                                     <li>
                                         <a href="morris.html">Departamentos</a>

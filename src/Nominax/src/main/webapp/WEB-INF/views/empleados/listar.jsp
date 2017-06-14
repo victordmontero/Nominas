@@ -1,22 +1,24 @@
 <%-- 
     Document   : listar
-    Created on : Jun 9, 2017, 9:44:09 AM
-    Author     : Phenom
+    Created on : Jun 14, 2017, 4:17:32 PM
+    Author     : phenom
 --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags/" %>
 
 <t:layout>
-    <jsp:attribute name="header">
-        <h1>Listado de Puestos</h1>
+    <jsp:attribute name="styles">
+        
     </jsp:attribute>
-
+    
+    <jsp:attribute name="scripts">
+        
+    </jsp:attribute>
     <jsp:body>
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Listado de puestos</h1>
+                <h1 class="page-header">Listado de Empleados</h1>
             </div>
         </div>
         <div class="row">
@@ -38,24 +40,28 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Descripcion</th>
-                                    <th>Salario Minimo</th>
-                                    <th>Salario Maximo</th>
-                                    <th>Riesgo</th>
+                                    <th>Cedula</th>
+                                    <th>Nombre</th>
+                                    <th>Departamento</th>
+                                    <th>Puesto</th>
+                                    <th>Salario</th>
+                                    <th>Nomina</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <c:forEach var="p" items="${puestos}">
+                                <c:forEach var="e" items="${empleados}">
                                     <tr>
-                                        <td>${p.idPuesto}</td>
-                                        <td><a href="/Nominax/puestos/editar/${p.idPuesto}">
-                                                ${p.descripcion}</a></td>
-                                        <td>${p.salarioMin}</td>
-                                        <td>${p.salarioMax}</td>
-                                        <td>${p.riesgo}</td>
+                                        <td>${e.idEmpleado}</td>
+                                        <td>${e.Cedula}</td>
+                                        <td><a href="/Nominax/puestos/editar/${e.idEmpleado}">
+                                                ${e.Nombre}</a></td>
+                                        <td>${e.idDepartamento}</td>
+                                        <td>${e.idPuesto}</td>
+                                        <td>${e.salario}</td>
+                                        <td>${e.idNomina}</td>
                                         <th>
-                                            <a href="/Nominax/puestos/eliminar/${p.idPuesto}"><i class="fa fa-trash"></i></a>
+                                            <a href="/Nominax/puestos/eliminar/${e.idEmpleado}"><i class="fa fa-trash"></i></a>
                                         </th>
                                     </tr>
                                 </c:forEach>
@@ -68,4 +74,5 @@
             </div>
         </div>
     </jsp:body>
+    
 </t:layout>
