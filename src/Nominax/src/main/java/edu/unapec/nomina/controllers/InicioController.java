@@ -14,25 +14,4 @@ public class InicioController {
         
         return "index";
     }
-
-    //<editor-fold defaultstate="collapsed" desc="Comentado">
-    /*
-        
-        @RequestMapping(value = "/guardar", method = RequestMethod.GET)
-	public String Guardar() {
-
-		return "guardar";
-	}
-
-	@RequestMapping(value = "/guardar", method = RequestMethod.POST)
-	public String Guardar(Model model, Persona persona) {
-
-		model.addAttribute("titulo", persona.toString());
-		model.addAttribute("mensaje", persona.getEdad());
-
-		return "index";
-	}
-        
-     */
-    //</editor-fold>
 }

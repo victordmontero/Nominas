@@ -17,6 +17,6 @@
     </jsp:attribute>
 
     <jsp:body>
-        <h1 class="page-header">${pageContext.request.localName}</h1>
+        <h1 class="page-header"></h1>
     </jsp:body>
 </t:layout>

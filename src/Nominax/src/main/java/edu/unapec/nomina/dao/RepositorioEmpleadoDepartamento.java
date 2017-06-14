@@ -7,6 +7,7 @@ package edu.unapec.nomina.dao;
 
 import edu.unapec.nomina.modelos.Empleadodepartamento;
 import java.util.List;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -46,11 +47,28 @@ public class RepositorioEmpleadoDepartamento extends RepositorioBase<Empleadodep
     }
 
     public Empleadodepartamento ObtenerUno(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
     }
 
     public List<Empleadodepartamento> ObtenerTodos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String hql = "from EmpleadoDepartamento";
+
+        Session session = sessionFactory.openSession();
+        List<Empleadodepartamento> lista = session.createQuery(hql).list();
+        session.close();
+        return lista;
+    }
+
+    public Empleadodepartamento ObtenerUno(int idEmpleado, int idDepartamento) {
+        String hql = String.format("from EmpleadoDepartamento "
+                +"where idEmpleado = %d and "
+                +"idDepartamento = %d", idEmpleado,idDepartamento);
+        Session session = sessionFactory.openSession();
+        Query query = session.createQuery(hql);
+        query.setMaxResults(1);
+        Empleadodepartamento ed = (Empleadodepartamento)query.uniqueResult();
+        session.close();
+        return ed;
     }
 
 }

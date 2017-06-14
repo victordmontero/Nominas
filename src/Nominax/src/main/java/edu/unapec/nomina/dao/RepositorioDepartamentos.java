@@ -49,11 +49,11 @@ public class RepositorioDepartamentos extends RepositorioBase<Departamentos> {
     public Departamentos ObtenerUno(int id) {
         String hql = String
                 .format("from Departamentos where idDepartemento = %d "
-                        +" and Estado = 1", id);
+                        + " and Estado = 1", id);
         Session session = sessionFactory.openSession();
         Query query = session.createQuery(hql);
         query.setMaxResults(1);
-        Departamentos departamentos = (Departamentos)query.uniqueResult();
+        Departamentos departamentos = (Departamentos) query.uniqueResult();
         session.close();
         return departamentos;
     }
@@ -61,7 +61,7 @@ public class RepositorioDepartamentos extends RepositorioBase<Departamentos> {
     public List<Departamentos> ObtenerTodos() {
         Session session = sessionFactory.openSession();
         List<Departamentos> lista = session.createQuery("from Departamentos "
-        +"where Estado = 1").list();
+                + "where Estado = 1").list();
         session.close();
         return lista;
     }
