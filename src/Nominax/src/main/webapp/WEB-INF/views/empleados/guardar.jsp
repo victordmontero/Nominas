@@ -25,7 +25,7 @@
                     <div class="panel-body">
                         <mvc:form modelAttribute="empleado" action="guardar" method="POST">
                             <div class="row">
-                                <div class="form-group col-lg-12">
+                                <div class="form-group col-lg-6">
                                     <mvc:label path="cedula">Cedula</mvc:label>
                                     <mvc:input path="cedula" cssClass="form-control" />
                                 </div>
@@ -37,17 +37,17 @@
                                     <mvc:label path="salario">Salario</mvc:label>
                                     <mvc:input path="salario" cssClass="form-control" />
                                 </div>
-                                <div class="form-group col-lg-6">
+                                <%--<div class="form-group col-lg-6">
                                     <mvc:label path="departamentos">Departamento</mvc:label>
                                     <mvc:select path="departamentos" cssClass="form-control" items="${departamentos}" />
-                                </div>
+                                </div>--%>
                                 <div class="form-group col-lg-6">
                                     <mvc:label path="puestos">Puesto</mvc:label>
-                                    <mvc:select path="puestos" cssClass="form-control" items="${puestos}" />
+                                    <mvc:select path="puestos" cssClass="form-control" items="${puestos}" itemLabel="descripcion" itemValue="idPuesto"/>
                                 </div>
                                 <div class="form-group col-lg-6">
-                                    <mvc:label path="nominas">Nomina</mvc:label>
-                                    <mvc:select path="nominas" cssClass="form-control" items="${nominas}" />
+                                    <mvc:label path="idNomina">Nomina</mvc:label>
+                                    <mvc:select path="idNomina" cssClass="form-control" items="${nominas}" />
                                 </div>
                                 <input type="hidden" value="estado" value="true"/>
                             </div>

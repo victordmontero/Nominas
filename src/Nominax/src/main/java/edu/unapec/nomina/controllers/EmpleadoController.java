@@ -7,8 +7,10 @@ package edu.unapec.nomina.controllers;
 
 import edu.unapec.nomina.dao.IRepositorio;
 import edu.unapec.nomina.modelos.Empleados;
+import edu.unapec.nomina.modelos.Puestos;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -17,17 +19,40 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 @RequestMapping(value = "/empleados")
-public class EmpleadoController extends CRUDController<Empleados>{
-
-    public EmpleadoController(IRepositorio<Empleados> repositorio) {
+public class EmpleadoController extends CRUDController<Empleados> {
+    
+    IRepositorio<Puestos> repoPuestos;
+    
+    public EmpleadoController(IRepositorio<Empleados> repositorio, IRepositorio<Puestos> repoPuestos) {
+        
         super(repositorio);
+        this.repoPuestos = repoPuestos;
     }
     
     @RequestMapping(value = "/listar")
-    public ModelAndView listar(){
+    public ModelAndView listar() {
         ModelAndView mv = new ModelAndView();
-        mv.addObject("empleados",repositorio.ObtenerTodos());
+        mv.addObject("empleados", repositorio.ObtenerTodos());
         mv.setViewName("empleados/listar");
+        return mv;
+    }
+    
+    @RequestMapping(value = "/guardar")
+    public ModelAndView guardar() {
+        ModelAndView mv = new ModelAndView();
+        String[] nominas = {"Contabilidad", "TI"};
+        mv.addObject("empleado", new Empleados());
+        mv.addObject("puestos", repoPuestos.ObtenerTodos());
+        mv.addObject("nominas", nominas);
+        mv.setViewName("empleados/guardar");
+        return mv;
+    }
+    
+    @RequestMapping(value = "/guardar", method = RequestMethod.POST)
+    public ModelAndView guardar(Empleados empleado) {
+        ModelAndView mv = new ModelAndView();
+        repositorio.Guardar(empleado);
+        mv.setViewName("redirect:listar");
         return mv;
     }
 }

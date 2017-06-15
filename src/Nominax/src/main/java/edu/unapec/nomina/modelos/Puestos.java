@@ -90,9 +90,12 @@ public class Puestos  implements java.io.Serializable {
         this.empleadoses = empleadoses;
     }
 
-
-
-
+    @Override
+    public String toString() {
+        return descripcion; //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
 }
 
 

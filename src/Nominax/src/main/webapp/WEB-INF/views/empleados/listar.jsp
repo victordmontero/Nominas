@@ -9,11 +9,11 @@
 
 <t:layout>
     <jsp:attribute name="styles">
-        
+
     </jsp:attribute>
-    
+
     <jsp:attribute name="scripts">
-        
+
     </jsp:attribute>
     <jsp:body>
         <div class="row">
@@ -23,7 +23,7 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <a class="btn btn-success" href="/Nominax/puestos/guardar">
+                <a class="btn btn-success" href="/Nominax/empleados/guardar">
                     <i class="fa fa-plus"></i> Guardar</a>
             </div>
         </div>
@@ -50,21 +50,21 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <c:forEach var="e" items="${empleados}">
-                                    <tr>
-                                        <td>${e.idEmpleado}</td>
-                                        <td>${e.Cedula}</td>
-                                        <td><a href="/Nominax/puestos/editar/${e.idEmpleado}">
-                                                ${e.Nombre}</a></td>
-                                        <td>${e.idDepartamento}</td>
-                                        <td>${e.idPuesto}</td>
-                                        <td>${e.salario}</td>
-                                        <td>${e.idNomina}</td>
-                                        <th>
-                                            <a href="/Nominax/puestos/eliminar/${e.idEmpleado}"><i class="fa fa-trash"></i></a>
-                                        </th>
-                                    </tr>
-                                </c:forEach>
+                            <c:forEach var="e" items="${empleados}">
+                                <tr>
+                                    <td>${e.idEmpleado}</td>
+                                    <td>${e.cedula}</td>
+                                    <td><a href="/Nominax/puestos/editar/${e.idEmpleado}">
+                                            ${e.nombre}</a></td>
+                                    <td>${e.idDepartamento}</td>
+                                    <td>${e.idPuesto}</td>
+                                    <td>${e.salario}</td>
+                                    <td>${e.idNomina}</td>
+                                    <th>
+                                        <a href="/Nominax/puestos/eliminar/${e.idEmpleado}"><i class="fa fa-trash"></i></a>
+                                    </th>
+                                </tr>
+                            </c:forEach>
                             </tbody>
                         </table>
                     </div>
@@ -74,5 +74,5 @@
             </div>
         </div>
     </jsp:body>
-    
+
 </t:layout>
