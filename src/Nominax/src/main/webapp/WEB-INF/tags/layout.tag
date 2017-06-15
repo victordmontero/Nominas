@@ -337,7 +337,7 @@
                                         <a href="/Nominax/empleados/listar">Empleados</a>
                                     </li>
                                     <li>
-                                        <a href="morris.html">Departamentos</a>
+                                        <a href="/Nominax/departamentos/listar">Departamentos</a>
                                     </li>
                                     <li>
                                         <a href="/Nominax/puestos/listar">Puestos</a>

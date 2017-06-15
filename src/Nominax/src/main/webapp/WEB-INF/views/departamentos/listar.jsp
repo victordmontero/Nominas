@@ -1,7 +1,7 @@
 <%-- 
     Document   : listar
-    Created on : Jun 9, 2017, 9:44:09 AM
-    Author     : Phenom
+    Created on : Jun 15, 2017, 8:25:32 AM
+    Author     : phenom
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -16,12 +16,12 @@
     <jsp:body>
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Listado de puestos</h1>
+                <h1 class="page-header">Listado de departamentos</h1>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <a class="btn btn-success" href="/Nominax/puestos/guardar">
+                <a class="btn btn-success" href="/Nominax/departamentos/guardar">
                     <i class="fa fa-plus"></i> Guardar</a>
             </div>
         </div>
@@ -30,7 +30,7 @@
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Listado de puestos
+                        Listado de departamentos
                     </div>
                     <!-- /.panel-heading -->
                     <div class="panel-body">
@@ -38,27 +38,23 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Descripcion</th>
-                                    <th>Salario Minimo</th>
-                                    <th>Salario Maximo</th>
-                                    <th>Riesgo</th>
+                                    <th>Nombre</th>
+                                    <th>Ubicacion</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <c:forEach var="p" items="${puestos}">
-                                    <tr>
-                                        <td>${p.idPuesto}</td>
-                                        <td><a href="/Nominax/puestos/editar/${p.idPuesto}">
-                                                ${p.descripcion}</a></td>
-                                        <td>${p.salarioMin}</td>
-                                        <td>${p.salarioMax}</td>
-                                        <td>${p.riesgo}</td>
-                                        <th>
-                                            <a href="/Nominax/puestos/eliminar/${p.idPuesto}"><i class="fa fa-trash"></i></a>
-                                        </th>
-                                    </tr>
-                                </c:forEach>
+                            <c:forEach var="d" items="${departamentos}">
+                                <tr>
+                                    <td>${d.idDepartamento}</td>
+                                    <td><a href="/Nominax/departamentos/editar/${d.idDepartamento}">
+                                            ${d.nombre}</a></td>
+                                    <td>${d.ubicacion}</td>
+                                    <td>
+                                        <a href="/Nominax/departamentos/eliminar/${d.idDepartamento}"><i class="fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            </c:forEach>
                             </tbody>
                         </table>
                     </div>
@@ -69,3 +65,5 @@
         </div>
     </jsp:body>
 </t:layout>
+
+

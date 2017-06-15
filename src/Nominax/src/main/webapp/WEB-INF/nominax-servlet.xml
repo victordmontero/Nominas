@@ -27,7 +27,7 @@
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
         <property name="url" value="jdbc:mysql://localhost:3306/Nominas" />
         <property name="username" value="root" />
-        <property name="password" value="12345" />
+        <property name="password" value="mysql" />
     </bean>
 
     <bean id="hibernate3SessionFactory"
@@ -48,6 +48,8 @@
         </property>
     </bean>
     
+    
+    <!-- repositorios -->
     <bean id="repoPuestos" class="edu.unapec.nomina.dao.RepositorioPuestos">
         <constructor-arg name="sf" ref="hibernate3SessionFactory" />
     </bean>
@@ -56,15 +58,38 @@
         <constructor-arg name="sf" ref="hibernate3SessionFactory" />
     </bean>
 
+    <bean id="repoDepartamentos" class="edu.unapec.nomina.dao.RepositorioDepartamentos">
+        <constructor-arg name="sf" ref="hibernate3SessionFactory" />
+    </bean>
+    <bean id="repoTipoID" class="edu.unapec.nomina.dao.RepositorioTipoIngresoDeduccion">
+        <constructor-arg name="sf" ref="hibernate3SessionFactory" />
+    </bean>
+    <!-- repositorios -->
+
+    <!-- Controladores -->
     <bean id="puestoController" class="edu.unapec.nomina.controllers.PuestoController" >
         <constructor-arg name="repositorio" ref="repoPuestos"/>
         <!--<property name="personaDao" ref="personaDao" />-->
     </bean>
     
-    <bean id="empleadoController" class="edu.unapec.nomina.controllers.EmpleadoController" >
-        <constructor-arg name="repositorio" ref="repoEmpleados"/>
-        <constructor-arg name="repoPuestos" ref="repoPuestos" />
+    <bean id="departamentoController" class="edu.unapec.nomina.controllers.DepartamentoController" >
+        <constructor-arg name="repositorio" ref="repoDepartamentos"/>
         <!--<property name="personaDao" ref="personaDao" />-->
     </bean>
+    
+    <!--
+    <bean id="tipoIDController" class="edu.unapec.nomina.controllers.TipoIngresoDeduccionController">
+        <constructor-arg name="repositorio" ref="repoTipoID"/>
+    </bean>
+    -->
+    
+    <bean id="empleadoController" class="edu.unapec.nomina.controllers.EmpleadoController" >
+        <constructor-arg index="0" name="repositorio" ref="repoEmpleados"/>
+        <constructor-arg index="1" name="repoPuestos" ref="repoPuestos" />
+        <constructor-arg index="2" name="repoDepartamentos" ref="repoDepartamentos" />
+        <!--<property name="personaDao" ref="personaDao" />-->
+    </bean>
+    
+    <!-- Controladores -->
 
 </beans>
