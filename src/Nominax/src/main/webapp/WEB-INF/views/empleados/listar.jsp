@@ -4,6 +4,7 @@
     Author     : phenom
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags/" %>
 
@@ -54,14 +55,14 @@
                                 <tr>
                                     <td>${e.idEmpleado}</td>
                                     <td>${e.cedula}</td>
-                                    <td><a href="/Nominax/puestos/editar/${e.idEmpleado}">
+                                    <td><a href="/Nominax/empleados/editar/${e.idEmpleado}">
                                             ${e.nombre}</a></td>
                                     <td>${e.idDepartamento}</td>
                                     <td>${e.idPuesto}</td>
                                     <td>${e.salario}</td>
                                     <td>${e.idNomina}</td>
                                     <th>
-                                        <a href="/Nominax/puestos/eliminar/${e.idEmpleado}"><i class="fa fa-trash"></i></a>
+                                        <a href="/Nominax/empleados/eliminar/${e.idEmpleado}"><i class="fa fa-trash"></i></a>
                                     </th>
                                 </tr>
                             </c:forEach>
