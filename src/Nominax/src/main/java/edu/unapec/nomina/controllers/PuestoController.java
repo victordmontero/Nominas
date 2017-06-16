@@ -7,6 +7,7 @@ package edu.unapec.nomina.controllers;
 
 import edu.unapec.nomina.dao.IRepositorio;
 import edu.unapec.nomina.modelos.Puestos;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value = "/puestos")
 public class PuestoController extends CRUDController<Puestos> {
 
+    @Autowired
     public PuestoController(IRepositorio<Puestos> repositorio) {
         super(repositorio);
     }
@@ -44,12 +46,11 @@ public class PuestoController extends CRUDController<Puestos> {
     }
 
     @RequestMapping(value = "/guardar", method = RequestMethod.POST)
-    public ModelAndView guardar(Puestos puesto) {
+    public String guardar(Puestos puesto) {
         puesto.setEstado(true);
-        ModelAndView mv = new ModelAndView();
         repositorio.Guardar(puesto);
-        mv.setViewName("redirect:listar");
-        return mv;
+        return "redirect:listar";
+        
     }
 
     @RequestMapping(value = "/editar/{idPuesto}")
@@ -64,19 +65,15 @@ public class PuestoController extends CRUDController<Puestos> {
     }
 
     @RequestMapping(value = "/editar", method = RequestMethod.POST)
-    public ModelAndView editar(Puestos puesto) {
-        ModelAndView mv = new ModelAndView();
+    public String editar(Puestos puesto) {
         repositorio.Editar(puesto);
-        mv.setViewName("redirect:listar");
-        return mv;
+        return "redirect:listar";
     }
 
     @RequestMapping(value = "/eliminar/{idPuesto}")
-    public ModelAndView eliminar(@PathVariable int idPuesto) {
-        ModelAndView mv = new ModelAndView();
+    public String eliminar(@PathVariable int idPuesto) {
         Puestos puesto = repositorio.ObtenerUno(idPuesto);
         repositorio.Eliminar(puesto);
-        mv.setViewName("redirect:/puestos/listar");
-        return mv;
+        return "redirect:/puestos/listar";
     }
 }

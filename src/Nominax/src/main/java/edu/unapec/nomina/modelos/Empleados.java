@@ -1,5 +1,5 @@
 package edu.unapec.nomina.modelos;
-// Generated Jun 8, 2017 1:25:32 PM by Hibernate Tools 4.3.1
+// Generated Jun 16, 2017 4:18:05 PM by Hibernate Tools 4.3.1
 
 
 import java.math.BigDecimal;
@@ -14,37 +14,37 @@ public class Empleados  implements java.io.Serializable {
 
      private Integer idEmpleado;
      private Departamentos departamentos;
+     private Nominas nominas;
      private Puestos puestos;
      private String cedula;
      private String nombre;
      private BigDecimal salario;
-     private String idNomina;
      private boolean estado;
      private Set transaccioneses = new HashSet(0);
-     private Set empleadodepartamentos = new HashSet(0);
+     private Set empleadoDepartamentos = new HashSet(0);
 
     public Empleados() {
     }
 
 	
-    public Empleados(Departamentos departamentos, Puestos puestos, String nombre, BigDecimal salario, String idNomina, boolean estado) {
+    public Empleados(Departamentos departamentos, Nominas nominas, Puestos puestos, String nombre, BigDecimal salario, boolean estado) {
         this.departamentos = departamentos;
+        this.nominas = nominas;
         this.puestos = puestos;
         this.nombre = nombre;
         this.salario = salario;
-        this.idNomina = idNomina;
         this.estado = estado;
     }
-    public Empleados(Departamentos departamentos, Puestos puestos, String cedula, String nombre, BigDecimal salario, String idNomina, boolean estado, Set transaccioneses, Set empleadodepartamentos) {
+    public Empleados(Departamentos departamentos, Nominas nominas, Puestos puestos, String cedula, String nombre, BigDecimal salario, boolean estado, Set transaccioneses, Set empleadoDepartamentos) {
        this.departamentos = departamentos;
+       this.nominas = nominas;
        this.puestos = puestos;
        this.cedula = cedula;
        this.nombre = nombre;
        this.salario = salario;
-       this.idNomina = idNomina;
        this.estado = estado;
        this.transaccioneses = transaccioneses;
-       this.empleadodepartamentos = empleadodepartamentos;
+       this.empleadoDepartamentos = empleadoDepartamentos;
     }
    
     public Integer getIdEmpleado() {
@@ -60,6 +60,13 @@ public class Empleados  implements java.io.Serializable {
     
     public void setDepartamentos(Departamentos departamentos) {
         this.departamentos = departamentos;
+    }
+    public Nominas getNominas() {
+        return this.nominas;
+    }
+    
+    public void setNominas(Nominas nominas) {
+        this.nominas = nominas;
     }
     public Puestos getPuestos() {
         return this.puestos;
@@ -89,13 +96,6 @@ public class Empleados  implements java.io.Serializable {
     public void setSalario(BigDecimal salario) {
         this.salario = salario;
     }
-    public String getIdNomina() {
-        return this.idNomina;
-    }
-    
-    public void setIdNomina(String idNomina) {
-        this.idNomina = idNomina;
-    }
     public boolean isEstado() {
         return this.estado;
     }
@@ -110,12 +110,12 @@ public class Empleados  implements java.io.Serializable {
     public void setTransaccioneses(Set transaccioneses) {
         this.transaccioneses = transaccioneses;
     }
-    public Set getEmpleadodepartamentos() {
-        return this.empleadodepartamentos;
+    public Set getEmpleadoDepartamentos() {
+        return this.empleadoDepartamentos;
     }
     
-    public void setEmpleadodepartamentos(Set empleadodepartamentos) {
-        this.empleadodepartamentos = empleadodepartamentos;
+    public void setEmpleadoDepartamentos(Set empleadoDepartamentos) {
+        this.empleadoDepartamentos = empleadoDepartamentos;
     }
 
 

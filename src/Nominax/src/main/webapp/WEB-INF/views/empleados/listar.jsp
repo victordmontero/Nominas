@@ -57,10 +57,10 @@
                                     <td>${e.cedula}</td>
                                     <td><a href="/Nominax/empleados/editar/${e.idEmpleado}">
                                             ${e.nombre}</a></td>
-                                    <td>${e.idDepartamento}</td>
-                                    <td>${e.idPuesto}</td>
+                                    <td>${e.departamentos.nombre}</td>
+                                    <td>${e.puestos.descripcion}</td>
                                     <td>${e.salario}</td>
-                                    <td>${e.idNomina}</td>
+                                    <td>${e.nominas.descripcion}</td>
                                     <th>
                                         <a href="/Nominax/empleados/eliminar/${e.idEmpleado}"><i class="fa fa-trash"></i></a>
                                     </th>

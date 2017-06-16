@@ -6,6 +6,7 @@
 package edu.unapec.nomina.controllers;
 
 import edu.unapec.nomina.dao.IRepositorio;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
@@ -17,5 +18,17 @@ public abstract class CRUDController<T> {
     public CRUDController(IRepositorio<T> repositorio) {
         this.repositorio = repositorio;
     }
+    
+    public abstract ModelAndView listar();
+    
+    public abstract ModelAndView guardar();
+    
+    public abstract String guardar(T model);
+    
+    public abstract ModelAndView editar(int id);
+    
+    public abstract String editar(T model);
+    
+    public abstract String eliminar(int id);
     
 }

@@ -5,7 +5,7 @@
  */
 package edu.unapec.nomina.dao;
 
-import edu.unapec.nomina.modelos.Departamentos;
+import edu.unapec.nomina.modelos.Nominas;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -17,14 +17,14 @@ import org.springframework.beans.factory.annotation.Autowired;
  *
  * @author phenom
  */
-public class RepositorioDepartamentos extends RepositorioBase<Departamentos> {
+public class RepositorioNominas extends RepositorioBase<Nominas>{
 
     @Autowired
-    public RepositorioDepartamentos(SessionFactory sf) {
+    public RepositorioNominas(SessionFactory sf) {
         super(sf);
     }
 
-    public void Guardar(Departamentos entidad) {
+    public void Guardar(Nominas entidad) {
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
         session.persist(entidad);
@@ -32,7 +32,7 @@ public class RepositorioDepartamentos extends RepositorioBase<Departamentos> {
         session.close();
     }
 
-    public void Editar(Departamentos entidad) {
+    public void Editar(Nominas entidad) {
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
         session.update(entidad);
@@ -40,7 +40,7 @@ public class RepositorioDepartamentos extends RepositorioBase<Departamentos> {
         session.close();
     }
 
-    public void Eliminar(Departamentos entidad) {
+    public void Eliminar(Nominas entidad) {
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
         session.delete(entidad);
@@ -48,24 +48,24 @@ public class RepositorioDepartamentos extends RepositorioBase<Departamentos> {
         session.close();
     }
 
-    public Departamentos ObtenerUno(int id) {
-        String hql = String
-                .format("from Departamentos where idDepartamento = %d "
-                        + " and Estado = 1", id);
+    public Nominas ObtenerUno(int id) {
+        String hql = String.format("from Nominas "+
+                "where idNomina = %d and Estado = 1", id);
         Session session = sessionFactory.openSession();
         Query query = session.createQuery(hql);
         query.setMaxResults(1);
-        Departamentos departamentos = (Departamentos) query.uniqueResult();
+        Nominas nomina = (Nominas)query.uniqueResult();
         session.close();
-        return departamentos;
+        return nomina;
     }
 
-    public List<Departamentos> ObtenerTodos() {
+    public List<Nominas> ObtenerTodos() {
         Session session = sessionFactory.openSession();
-        List<Departamentos> lista = session.createQuery("from Departamentos "
-                + "where Estado = 1").list();
+        List<Nominas> nominas = 
+                session.createQuery("from Nominas where Estado = 1").list();
         session.close();
-        return lista;
+        return nominas;
     }
-
+    
+    
 }

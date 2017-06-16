@@ -24,8 +24,8 @@
                         Nuevo Empleado
                     </div>
                     <div class="panel-body">
-                        <mvc:form modelAttribute="empleado" action="/Nominax/empleados/guardar" method="POST">
-                            <input type="hidden" value="estado" value="true"/>
+                        <mvc:form modelAttribute="empleado" action="guardar" method="POST">
+                            <input type="hidden" name="estado" value="true"/>
                             <div class="row">
                                 <div class="form-group col-lg-6">
                                     <mvc:label path="cedula">Cedula</mvc:label>
@@ -40,16 +40,16 @@
                                     <mvc:input path="salario" cssClass="form-control" />
                                 </div>
                                 <div class="form-group col-lg-6">
-                                    <mvc:label path="departamentos">Departamento</mvc:label>
-                                    <mvc:select path="departamentos" cssClass="form-control" items="${departamentos}" itemLabel="nombre" itemValue="idDepartamento" />
+                                    <mvc:label path="departamentos.idDepartamento">Departamento</mvc:label>
+                                    <mvc:select path="departamentos.idDepartamento" cssClass="form-control" items="${departamentos}" itemLabel="nombre" itemValue="idDepartamento" />
                                 </div>
                                 <div class="form-group col-lg-6">
-                                    <mvc:label path="puestos">Puesto</mvc:label>
-                                    <mvc:select path="puestos" cssClass="form-control" items="${puestos}" itemLabel="descripcion" itemValue="idPuesto"/>
+                                    <mvc:label path="puestos.idPuesto">Puesto</mvc:label>
+                                    <mvc:select path="puestos.idPuesto" cssClass="form-control" items="${puestos}" itemLabel="descripcion" itemValue="idPuesto"/>
                                 </div>
                                 <div class="form-group col-lg-6">
-                                    <mvc:label path="idNomina">Nomina</mvc:label>
-                                    <mvc:select path="idNomina" cssClass="form-control" items="${nominas}" />
+                                    <mvc:label path="nominas.idNomina">Nomina</mvc:label>
+                                    <mvc:select path="nominas.idNomina" cssClass="form-control" items="${nominas}" itemLabel="descripcion" itemValue="idNomina"/>
                                 </div>
                             </div>
                             <button class="btn btn-success" type="submit">Guardar</button>

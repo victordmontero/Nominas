@@ -7,7 +7,10 @@ package edu.unapec.nomina.controllers;
 
 import edu.unapec.nomina.dao.IRepositorio;
 import edu.unapec.nomina.modelos.Departamentos;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value = "/departamentos")
 public class DepartamentoController extends CRUDController<Departamentos>{
 
+    @Autowired
     public DepartamentoController(IRepositorio<Departamentos> repositorio) {
         super(repositorio);
     }
@@ -41,11 +45,31 @@ public class DepartamentoController extends CRUDController<Departamentos>{
     }
     
     @RequestMapping(value = "/guardar",method = RequestMethod.POST)
-    public ModelAndView guardar(Departamentos departamento){
-        ModelAndView mv = new ModelAndView();
+    public String guardar(Departamentos departamento){
         repositorio.Guardar(departamento);
-        mv.setViewName("redirect:listar");
+        return "redirect:listar";
+    }
+    
+    @RequestMapping(value = "/editar/{id}")
+    public ModelAndView editar(@PathVariable int id){
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("departamento",repositorio.ObtenerUno(id));
+        mv.setViewName("departamentos/editar");
         return mv;
     }
+    
+    @RequestMapping(value = "/editar",method = RequestMethod.POST)
+    public String editar(Departamentos departamento){
+        repositorio.Editar(departamento);
+        return "redirect:listar";
+    }
+    
+    @RequestMapping(value = "/eliminar/{id}")
+    public String eliminar(@PathVariable int id){
+        repositorio.Eliminar(repositorio.ObtenerUno(id));
+        return "redirect:/departamentos/listar";
+    }
+    
+    
 }
     

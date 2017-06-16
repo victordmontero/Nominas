@@ -5,7 +5,7 @@
  */
 package edu.unapec.nomina.dao;
 
-import edu.unapec.nomina.modelos.Empleadodepartamento;
+import edu.unapec.nomina.modelos.EmpleadoDepartamento;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -16,13 +16,13 @@ import org.hibernate.Transaction;
  *
  * @author phenom
  */
-public class RepositorioEmpleadoDepartamento extends RepositorioBase<Empleadodepartamento> {
+public class RepositorioEmpleadoDepartamento extends RepositorioBase<EmpleadoDepartamento> {
 
     public RepositorioEmpleadoDepartamento(SessionFactory sf) {
         super(sf);
     }
 
-    public void Guardar(Empleadodepartamento entidad) {
+    public void Guardar(EmpleadoDepartamento entidad) {
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
         session.persist(entidad);
@@ -30,7 +30,7 @@ public class RepositorioEmpleadoDepartamento extends RepositorioBase<Empleadodep
         session.close();
     }
 
-    public void Editar(Empleadodepartamento entidad) {
+    public void Editar(EmpleadoDepartamento entidad) {
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
         session.update(entidad);
@@ -38,7 +38,7 @@ public class RepositorioEmpleadoDepartamento extends RepositorioBase<Empleadodep
         session.close();
     }
 
-    public void Eliminar(Empleadodepartamento entidad) {
+    public void Eliminar(EmpleadoDepartamento entidad) {
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
         session.delete(entidad);
@@ -46,27 +46,27 @@ public class RepositorioEmpleadoDepartamento extends RepositorioBase<Empleadodep
         session.close();
     }
 
-    public Empleadodepartamento ObtenerUno(int id) {
+    public EmpleadoDepartamento ObtenerUno(int id) {
         return null;
     }
 
-    public List<Empleadodepartamento> ObtenerTodos() {
+    public List<EmpleadoDepartamento> ObtenerTodos() {
         String hql = "from EmpleadoDepartamento";
 
         Session session = sessionFactory.openSession();
-        List<Empleadodepartamento> lista = session.createQuery(hql).list();
+        List<EmpleadoDepartamento> lista = session.createQuery(hql).list();
         session.close();
         return lista;
     }
 
-    public Empleadodepartamento ObtenerUno(int idEmpleado, int idDepartamento) {
+    public EmpleadoDepartamento ObtenerUno(int idEmpleado, int idDepartamento) {
         String hql = String.format("from EmpleadoDepartamento "
                 +"where idEmpleado = %d and "
                 +"idDepartamento = %d", idEmpleado,idDepartamento);
         Session session = sessionFactory.openSession();
         Query query = session.createQuery(hql);
         query.setMaxResults(1);
-        Empleadodepartamento ed = (Empleadodepartamento)query.uniqueResult();
+        EmpleadoDepartamento ed = (EmpleadoDepartamento)query.uniqueResult();
         session.close();
         return ed;
     }

@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jun 8, 2017 1:25:33 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Jun 16, 2017 4:18:06 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="edu.unapec.nomina.modelos.Puestos" optimistic-lock="version">
+    <class name="edu.unapec.nomina.modelos.Puestos" table="Puestos" catalog="Nominas" optimistic-lock="version">
         <id name="idPuesto" type="java.lang.Integer">
             <column name="IdPuesto" />
             <generator class="identity" />
         </id>
         <property name="descripcion" type="string">
-            <column name="Descripcion" length="20" not-null="true" />
+            <column name="Descripcion" length="50" not-null="true" />
         </property>
         <property name="riesgo" type="string">
             <column name="Riesgo" length="10" not-null="true" />
@@ -23,7 +23,7 @@
         <property name="estado" type="boolean">
             <column name="Estado" not-null="true" />
         </property>
-        <set name="empleadoses" table="empleados" inverse="true" lazy="true" fetch="select">
+        <set name="empleadoses" table="Empleados" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="IdPuesto" not-null="true" />
             </key>

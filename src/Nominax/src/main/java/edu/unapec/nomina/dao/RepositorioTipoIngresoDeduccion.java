@@ -5,7 +5,7 @@
  */
 package edu.unapec.nomina.dao;
 
-import edu.unapec.nomina.modelos.Tipoingresodeduccion;
+import edu.unapec.nomina.modelos.TipoIngresoDeduccion;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -16,13 +16,13 @@ import org.hibernate.Transaction;
  *
  * @author phenom
  */
-public class RepositorioTipoIngresoDeduccion extends RepositorioBase<Tipoingresodeduccion> {
+public class RepositorioTipoIngresoDeduccion extends RepositorioBase<TipoIngresoDeduccion> {
 
     public RepositorioTipoIngresoDeduccion(SessionFactory sf) {
         super(sf);
     }
 
-    public void Guardar(Tipoingresodeduccion entidad) {
+    public void Guardar(TipoIngresoDeduccion entidad) {
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
         session.persist(entidad);
@@ -30,7 +30,7 @@ public class RepositorioTipoIngresoDeduccion extends RepositorioBase<Tipoingreso
         session.close();
     }
 
-    public void Editar(Tipoingresodeduccion entidad) {
+    public void Editar(TipoIngresoDeduccion entidad) {
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
         session.update(entidad);
@@ -38,7 +38,7 @@ public class RepositorioTipoIngresoDeduccion extends RepositorioBase<Tipoingreso
         session.close();
     }
 
-    public void Eliminar(Tipoingresodeduccion entidad) {
+    public void Eliminar(TipoIngresoDeduccion entidad) {
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
         session.delete(entidad);
@@ -46,21 +46,21 @@ public class RepositorioTipoIngresoDeduccion extends RepositorioBase<Tipoingreso
         session.close();
     }
 
-    public Tipoingresodeduccion ObtenerUno(int id) {
+    public TipoIngresoDeduccion ObtenerUno(int id) {
         String hql
                 = String.format("from TipoIngresoDeduccion "
                         + "where IdTipoIngresoDeduccion = %d and Estado = 1", id);
         Session session = sessionFactory.openSession();
         Query query = session.createQuery(hql);
         query.setMaxResults(1);
-        Tipoingresodeduccion tipoingresodeduccion = (Tipoingresodeduccion) query.uniqueResult();
+        TipoIngresoDeduccion tipoingresodeduccion = (TipoIngresoDeduccion) query.uniqueResult();
         session.close();
         return tipoingresodeduccion;
     }
 
-    public List<Tipoingresodeduccion> ObtenerTodos() {
+    public List<TipoIngresoDeduccion> ObtenerTodos() {
         Session session = sessionFactory.openSession();
-        List<Tipoingresodeduccion> tipos
+        List<TipoIngresoDeduccion> tipos
                 = session.createQuery("from TipoIngresoDeduccion where Estado = 1")
                         .list();
         session.close();

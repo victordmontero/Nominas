@@ -8,6 +8,7 @@ package edu.unapec.nomina.dao;
 import edu.unapec.nomina.modelos.Puestos;
 import java.util.List;
 import org.hibernate.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -15,6 +16,7 @@ import org.hibernate.*;
  */
 public class RepositorioPuestos extends RepositorioBase<Puestos>{
 
+    @Autowired
     public RepositorioPuestos(SessionFactory sf) {
         super(sf);
     }

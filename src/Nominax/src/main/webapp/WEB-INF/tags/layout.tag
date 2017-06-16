@@ -343,10 +343,10 @@
                                         <a href="/Nominax/puestos/listar">Puestos</a>
                                     </li>
                                     <li>
-                                        <a href="#">Tipos de Ingresos</a>
+                                        <a href="#">Tipos de Ingresos y Deducciones</a>
                                     </li>
                                     <li>
-                                        <a href="#">Deducciones</a>
+                                        <a href="/Nominax/nominas/listar">Nominas</a>
                                     </li>
                                     <%-- Especial para la seguridad --%>
                                     <li>

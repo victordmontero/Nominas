@@ -1,5 +1,5 @@
 package edu.unapec.nomina.modelos;
-// Generated Jun 8, 2017 1:25:32 PM by Hibernate Tools 4.3.1
+// Generated Jun 16, 2017 4:18:05 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -12,7 +12,7 @@ public class Transacciones  implements java.io.Serializable {
 
      private Integer idTransaccion;
      private Empleados empleados;
-     private Tipoingresodeduccion tipoingresodeduccion;
+     private TipoIngresoDeduccion tipoIngresoDeduccion;
      private String tipoTransaccion;
      private Date fecha;
 
@@ -20,14 +20,14 @@ public class Transacciones  implements java.io.Serializable {
     }
 
 	
-    public Transacciones(Empleados empleados, Tipoingresodeduccion tipoingresodeduccion, Date fecha) {
+    public Transacciones(Empleados empleados, TipoIngresoDeduccion tipoIngresoDeduccion, Date fecha) {
         this.empleados = empleados;
-        this.tipoingresodeduccion = tipoingresodeduccion;
+        this.tipoIngresoDeduccion = tipoIngresoDeduccion;
         this.fecha = fecha;
     }
-    public Transacciones(Empleados empleados, Tipoingresodeduccion tipoingresodeduccion, String tipoTransaccion, Date fecha) {
+    public Transacciones(Empleados empleados, TipoIngresoDeduccion tipoIngresoDeduccion, String tipoTransaccion, Date fecha) {
        this.empleados = empleados;
-       this.tipoingresodeduccion = tipoingresodeduccion;
+       this.tipoIngresoDeduccion = tipoIngresoDeduccion;
        this.tipoTransaccion = tipoTransaccion;
        this.fecha = fecha;
     }
@@ -46,12 +46,12 @@ public class Transacciones  implements java.io.Serializable {
     public void setEmpleados(Empleados empleados) {
         this.empleados = empleados;
     }
-    public Tipoingresodeduccion getTipoingresodeduccion() {
-        return this.tipoingresodeduccion;
+    public TipoIngresoDeduccion getTipoIngresoDeduccion() {
+        return this.tipoIngresoDeduccion;
     }
     
-    public void setTipoingresodeduccion(Tipoingresodeduccion tipoingresodeduccion) {
-        this.tipoingresodeduccion = tipoingresodeduccion;
+    public void setTipoIngresoDeduccion(TipoIngresoDeduccion tipoIngresoDeduccion) {
+        this.tipoIngresoDeduccion = tipoIngresoDeduccion;
     }
     public String getTipoTransaccion() {
         return this.tipoTransaccion;

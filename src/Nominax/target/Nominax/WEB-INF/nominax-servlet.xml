@@ -38,9 +38,10 @@
                 <value>/edu/unapec/nomina/modelos/Departamentos.hbm.xml</value>
                 <value>/edu/unapec/nomina/modelos/Puestos.hbm.xml</value>
                 <value>/edu/unapec/nomina/modelos/Empleados.hbm.xml</value>
-                <value>/edu/unapec/nomina/modelos/Empleadodepartamento.hbm.xml</value>
+                <value>/edu/unapec/nomina/modelos/EmpleadoDepartamento.hbm.xml</value>
                 <value>/edu/unapec/nomina/modelos/Transacciones.hbm.xml</value>
-                <value>/edu/unapec/nomina/modelos/Tipoingresodeduccion.hbm.xml</value>
+                <value>/edu/unapec/nomina/modelos/TipoIngresoDeduccion.hbm.xml</value>
+                <value>/edu/unapec/nomina/modelos/Nominas.hbm.xml</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -51,31 +52,29 @@
     
     <!-- repositorios -->
     <bean id="repoPuestos" class="edu.unapec.nomina.dao.RepositorioPuestos">
-        <constructor-arg name="sf" ref="hibernate3SessionFactory" />
+        <!--<constructor-arg name="sf" ref="hibernate3SessionFactory" />-->
     </bean>
     
     <bean id="repoEmpleados" class="edu.unapec.nomina.dao.RepositorioEmpleados">
-        <constructor-arg name="sf" ref="hibernate3SessionFactory" />
+        <!--<constructor-arg name="sf" ref="hibernate3SessionFactory" />-->
     </bean>
 
     <bean id="repoDepartamentos" class="edu.unapec.nomina.dao.RepositorioDepartamentos">
-        <constructor-arg name="sf" ref="hibernate3SessionFactory" />
+        <!--constructor-arg name="sf" ref="hibernate3SessionFactory" />-->
     </bean>
-    <bean id="repoTipoID" class="edu.unapec.nomina.dao.RepositorioTipoIngresoDeduccion">
+    <!--<bean id="repoTipoID" class="edu.unapec.nomina.dao.RepositorioTipoIngresoDeduccion">
         <constructor-arg name="sf" ref="hibernate3SessionFactory" />
-    </bean>
+    </bean>-->
+    
+    <bean id="repoNominas" class="edu.unapec.nomina.dao.RepositorioNominas"></bean>
     <!-- repositorios -->
 
     <!-- Controladores -->
-    <bean id="puestoController" class="edu.unapec.nomina.controllers.PuestoController" >
-        <constructor-arg name="repositorio" ref="repoPuestos"/>
-        <!--<property name="personaDao" ref="personaDao" />-->
-    </bean>
+    <bean id="puestoController" class="edu.unapec.nomina.controllers.PuestoController" ></bean>
     
-    <bean id="departamentoController" class="edu.unapec.nomina.controllers.DepartamentoController" >
-        <constructor-arg name="repositorio" ref="repoDepartamentos"/>
-        <!--<property name="personaDao" ref="personaDao" />-->
-    </bean>
+    <bean id="departamentoController" class="edu.unapec.nomina.controllers.DepartamentoController" ></bean>
+    
+    <bean id="nominaController" class="edu.unapec.nomina.controllers.NominaController"></bean>
     
     <!--
     <bean id="tipoIDController" class="edu.unapec.nomina.controllers.TipoIngresoDeduccionController">
@@ -84,9 +83,9 @@
     -->
     
     <bean id="empleadoController" class="edu.unapec.nomina.controllers.EmpleadoController" >
-        <constructor-arg index="0" name="repositorio" ref="repoEmpleados"/>
-        <constructor-arg index="1" name="repoPuestos" ref="repoPuestos" />
-        <constructor-arg index="2" name="repoDepartamentos" ref="repoDepartamentos" />
+        <!--<constructor-arg index="0" name="repositorio" ref="repoEmpleados"/>-->
+        <!--<constructor-arg index="1" name="repoPuestos" ref="repoPuestos" />-->
+        <!--<constructor-arg index="2" name="repoDepartamentos" ref="repoDepartamentos" />-->
         <!--<property name="personaDao" ref="personaDao" />-->
     </bean>
     

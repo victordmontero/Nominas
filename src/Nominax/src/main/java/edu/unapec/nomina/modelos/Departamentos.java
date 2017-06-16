@@ -1,5 +1,5 @@
 package edu.unapec.nomina.modelos;
-// Generated Jun 8, 2017 1:25:32 PM by Hibernate Tools 4.3.1
+// Generated Jun 16, 2017 4:18:05 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -15,8 +15,8 @@ public class Departamentos  implements java.io.Serializable {
      private String nombre;
      private String ubicacion;
      private boolean estado;
-     private Set empleadodepartamentos = new HashSet(0);
      private Set empleadoses = new HashSet(0);
+     private Set empleadoDepartamentos = new HashSet(0);
 
     public Departamentos() {
     }
@@ -27,12 +27,12 @@ public class Departamentos  implements java.io.Serializable {
         this.ubicacion = ubicacion;
         this.estado = estado;
     }
-    public Departamentos(String nombre, String ubicacion, boolean estado, Set empleadodepartamentos, Set empleadoses) {
+    public Departamentos(String nombre, String ubicacion, boolean estado, Set empleadoses, Set empleadoDepartamentos) {
        this.nombre = nombre;
        this.ubicacion = ubicacion;
        this.estado = estado;
-       this.empleadodepartamentos = empleadodepartamentos;
        this.empleadoses = empleadoses;
+       this.empleadoDepartamentos = empleadoDepartamentos;
     }
    
     public Integer getIdDepartamento() {
@@ -63,19 +63,19 @@ public class Departamentos  implements java.io.Serializable {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
-    public Set getEmpleadodepartamentos() {
-        return this.empleadodepartamentos;
-    }
-    
-    public void setEmpleadodepartamentos(Set empleadodepartamentos) {
-        this.empleadodepartamentos = empleadodepartamentos;
-    }
     public Set getEmpleadoses() {
         return this.empleadoses;
     }
     
     public void setEmpleadoses(Set empleadoses) {
         this.empleadoses = empleadoses;
+    }
+    public Set getEmpleadoDepartamentos() {
+        return this.empleadoDepartamentos;
+    }
+    
+    public void setEmpleadoDepartamentos(Set empleadoDepartamentos) {
+        this.empleadoDepartamentos = empleadoDepartamentos;
     }
 
 

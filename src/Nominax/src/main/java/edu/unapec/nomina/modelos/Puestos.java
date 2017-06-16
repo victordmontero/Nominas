@@ -1,5 +1,5 @@
 package edu.unapec.nomina.modelos;
-// Generated Jun 8, 2017 1:25:32 PM by Hibernate Tools 4.3.1
+// Generated Jun 16, 2017 4:18:05 PM by Hibernate Tools 4.3.1
 
 
 import java.math.BigDecimal;
@@ -90,12 +90,9 @@ public class Puestos  implements java.io.Serializable {
         this.empleadoses = empleadoses;
     }
 
-    @Override
-    public String toString() {
-        return descripcion; //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    
+
+
+
 }
 
 

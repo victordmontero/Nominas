@@ -1,7 +1,7 @@
 <%-- 
     Document   : guardar
-    Created on : Jun 9, 2017, 9:36:54 AM
-    Author     : Phenom
+    Created on : Jun 16, 2017, 4:01:16 PM
+    Author     : phenom
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -12,35 +12,23 @@
     <jsp:body>
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Nuevo puesto</h1>  
+                <h1 class="page-header">Nuevo tipo de nomina</h1>  
             </div>
         </div>
 
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Nuevo Puesto
+                        Nuevo tipo de nomina
                     </div>
                     <div class="panel-body">
-                        <mvc:form modelAttribute="puesto" action="guardar" method="POST">
+                        <mvc:form modelAttribute="nomina" action="guardar" method="POST">
                             <input type="hidden" name="estado" value="true"/>
                             <div class="row">
                                 <div class="form-group col-lg-12">
                                     <mvc:label path="descripcion">Descripci&oacute;n</mvc:label>
                                     <mvc:input path="descripcion" cssClass="form-control" />
-                                </div>
-                                <div class="form-group col-lg-6">
-                                    <mvc:label path="salarioMin">Salario M&iacute;nimo</mvc:label>
-                                    <mvc:input path="salarioMin" cssClass="form-control" />
-                                </div>
-                                <div class="form-group col-lg-6">
-                                    <mvc:label path="salarioMax">Salario M&aacute;ximo</mvc:label>
-                                    <mvc:input path="salarioMax" cssClass="form-control" />
-                                </div>
-                                <div class="form-group col-lg-6">
-                                    <mvc:label path="riesgo">Riesgo</mvc:label>
-                                    <mvc:select path="riesgo" cssClass="form-control" items="${riesgos}" />
                                 </div>
                             </div>
                             <button class="btn btn-success" type="submit">Guardar</button>
