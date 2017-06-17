@@ -343,7 +343,7 @@
                                         <a href="/Nominax/puestos/listar">Puestos</a>
                                     </li>
                                     <li>
-                                        <a href="#">Tipos de Ingresos y Deducciones</a>
+                                        <a href="/Nominax/tid/listar">Tipos de Ingresos y Deducciones</a>
                                     </li>
                                     <li>
                                         <a href="/Nominax/nominas/listar">Nominas</a>

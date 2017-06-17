@@ -62,9 +62,10 @@
     <bean id="repoDepartamentos" class="edu.unapec.nomina.dao.RepositorioDepartamentos">
         <!--constructor-arg name="sf" ref="hibernate3SessionFactory" />-->
     </bean>
-    <!--<bean id="repoTipoID" class="edu.unapec.nomina.dao.RepositorioTipoIngresoDeduccion">
-        <constructor-arg name="sf" ref="hibernate3SessionFactory" />
-    </bean>-->
+    
+    <bean id="repoTipoID" class="edu.unapec.nomina.dao.RepositorioTipoIngresoDeduccion">
+        <!--<constructor-arg name="sf" ref="hibernate3SessionFactory" />-->
+    </bean>
     
     <bean id="repoNominas" class="edu.unapec.nomina.dao.RepositorioNominas"></bean>
     <!-- repositorios -->
@@ -76,12 +77,10 @@
     
     <bean id="nominaController" class="edu.unapec.nomina.controllers.NominaController"></bean>
     
-    <!--
     <bean id="tipoIDController" class="edu.unapec.nomina.controllers.TipoIngresoDeduccionController">
-        <constructor-arg name="repositorio" ref="repoTipoID"/>
+        <!--<constructor-arg name="repositorio" ref="repoTipoID"/>-->
     </bean>
-    -->
-    
+        
     <bean id="empleadoController" class="edu.unapec.nomina.controllers.EmpleadoController" >
         <!--<constructor-arg index="0" name="repositorio" ref="repoEmpleados"/>-->
         <!--<constructor-arg index="1" name="repoPuestos" ref="repoPuestos" />-->
