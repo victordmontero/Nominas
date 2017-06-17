@@ -68,6 +68,8 @@
     </bean>
     
     <bean id="repoNominas" class="edu.unapec.nomina.dao.RepositorioNominas"></bean>
+    
+    <bean id="repoEmpDep" class="edu.unapec.nomina.dao.RepositorioEmpleadoDepartamento"></bean>
     <!-- repositorios -->
 
     <!-- Controladores -->
@@ -87,6 +89,8 @@
         <!--<constructor-arg index="2" name="repoDepartamentos" ref="repoDepartamentos" />-->
         <!--<property name="personaDao" ref="personaDao" />-->
     </bean>
+    
+    <bean id="empdepController" class="edu.unapec.nomina.controllers.EmpDepController"></bean>
     
     <!-- Controladores -->
 

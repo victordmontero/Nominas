@@ -348,6 +348,9 @@
                                     <li>
                                         <a href="/Nominax/nominas/listar">Nominas</a>
                                     </li>
+                                    <li>
+                                        <a href="/Nominax/empdep/listar">Encargados</a>
+                                    </li>
                                     <%-- Especial para la seguridad --%>
                                     <li>
                                         <a href="#">Usuarios</a>
