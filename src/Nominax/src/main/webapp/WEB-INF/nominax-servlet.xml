@@ -70,6 +70,8 @@
     <bean id="repoNominas" class="edu.unapec.nomina.dao.RepositorioNominas"></bean>
     
     <bean id="repoEmpDep" class="edu.unapec.nomina.dao.RepositorioEmpleadoDepartamento"></bean>
+    
+    <bean id="repoTransacciones" class="edu.unapec.nomina.dao.RepositorioTransacciones"></bean>
     <!-- repositorios -->
 
     <!-- Controladores -->
@@ -91,6 +93,8 @@
     </bean>
     
     <bean id="empdepController" class="edu.unapec.nomina.controllers.EmpDepController"></bean>
+    
+    <bean id="transaccionController" class="edu.unapec.nomina.controllers.TransaccionController"></bean>
     
     <!-- Controladores -->
 

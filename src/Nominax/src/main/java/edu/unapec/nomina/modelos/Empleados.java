@@ -1,5 +1,5 @@
 package edu.unapec.nomina.modelos;
-// Generated Jun 16, 2017 4:18:05 PM by Hibernate Tools 4.3.1
+// Generated Jun 19, 2017 10:30:59 AM by Hibernate Tools 4.3.1
 
 
 import java.math.BigDecimal;

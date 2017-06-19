@@ -54,6 +54,8 @@ CREATE TABLE IF NOT EXISTS Transacciones(
   IdIngresoDeduccion INT NOT NULL,
   TipoTransaccion VARCHAR(10),
   Fecha DATETIME NOT NULL DEFAULT NOW(),
+  Monto NUMERIC(12,2) NOT NULL DEFAULT 0.00,
+  Estado TINYINT(1) NOT NULL DEFAULT 1,
   FOREIGN KEY (IdEmpleado) REFERENCES Empleados(IdEmpleado),
   FOREIGN KEY (IdIngresoDeduccion) REFERENCES TipoIngresoDeduccion(IdTipoIngresoDeduccion)
 );

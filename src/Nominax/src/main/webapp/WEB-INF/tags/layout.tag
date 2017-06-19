@@ -351,6 +351,9 @@
                                     <li>
                                         <a href="/Nominax/empdep/listar">Encargados</a>
                                     </li>
+                                    <li>
+                                        <a href="/Nominax/transacciones/listar">Transacciones</a>
+                                    </li>
                                     <%-- Especial para la seguridad --%>
                                     <li>
                                         <a href="#">Usuarios</a>

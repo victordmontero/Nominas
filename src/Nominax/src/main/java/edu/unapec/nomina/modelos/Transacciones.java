@@ -1,7 +1,8 @@
 package edu.unapec.nomina.modelos;
-// Generated Jun 16, 2017 4:18:05 PM by Hibernate Tools 4.3.1
+// Generated Jun 19, 2017 10:30:59 AM by Hibernate Tools 4.3.1
 
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -15,21 +16,27 @@ public class Transacciones  implements java.io.Serializable {
      private TipoIngresoDeduccion tipoIngresoDeduccion;
      private String tipoTransaccion;
      private Date fecha;
+     private BigDecimal monto;
+     private boolean estado;
 
     public Transacciones() {
     }
 
 	
-    public Transacciones(Empleados empleados, TipoIngresoDeduccion tipoIngresoDeduccion, Date fecha) {
+    public Transacciones(Empleados empleados, TipoIngresoDeduccion tipoIngresoDeduccion, Date fecha, BigDecimal monto, boolean estado) {
         this.empleados = empleados;
         this.tipoIngresoDeduccion = tipoIngresoDeduccion;
         this.fecha = fecha;
+        this.monto = monto;
+        this.estado = estado;
     }
-    public Transacciones(Empleados empleados, TipoIngresoDeduccion tipoIngresoDeduccion, String tipoTransaccion, Date fecha) {
+    public Transacciones(Empleados empleados, TipoIngresoDeduccion tipoIngresoDeduccion, String tipoTransaccion, Date fecha, BigDecimal monto, boolean estado) {
        this.empleados = empleados;
        this.tipoIngresoDeduccion = tipoIngresoDeduccion;
        this.tipoTransaccion = tipoTransaccion;
        this.fecha = fecha;
+       this.monto = monto;
+       this.estado = estado;
     }
    
     public Integer getIdTransaccion() {
@@ -66,6 +73,20 @@ public class Transacciones  implements java.io.Serializable {
     
     public void setFecha(Date fecha) {
         this.fecha = fecha;
+    }
+    public BigDecimal getMonto() {
+        return this.monto;
+    }
+    
+    public void setMonto(BigDecimal monto) {
+        this.monto = monto;
+    }
+    public boolean isEstado() {
+        return this.estado;
+    }
+    
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
 
 

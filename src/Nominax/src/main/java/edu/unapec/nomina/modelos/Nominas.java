@@ -1,5 +1,5 @@
 package edu.unapec.nomina.modelos;
-// Generated Jun 16, 2017 4:18:05 PM by Hibernate Tools 4.3.1
+// Generated Jun 19, 2017 10:30:59 AM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -13,17 +13,18 @@ public class Nominas  implements java.io.Serializable {
 
      private Integer idNomina;
      private String descripcion;
-     private Boolean estado;
+     private boolean estado;
      private Set empleadoses = new HashSet(0);
 
     public Nominas() {
     }
 
 	
-    public Nominas(String descripcion) {
+    public Nominas(String descripcion, boolean estado) {
         this.descripcion = descripcion;
+        this.estado = estado;
     }
-    public Nominas(String descripcion, Boolean estado, Set empleadoses) {
+    public Nominas(String descripcion, boolean estado, Set empleadoses) {
        this.descripcion = descripcion;
        this.estado = estado;
        this.empleadoses = empleadoses;
@@ -43,11 +44,11 @@ public class Nominas  implements java.io.Serializable {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    public Boolean getEstado() {
+    public boolean isEstado() {
         return this.estado;
     }
     
-    public void setEstado(Boolean estado) {
+    public void setEstado(boolean estado) {
         this.estado = estado;
     }
     public Set getEmpleadoses() {
