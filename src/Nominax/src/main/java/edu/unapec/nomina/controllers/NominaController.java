@@ -27,7 +27,7 @@ public class NominaController extends CRUDController<Nominas> {
     }
 
     @Override
-    @RequestMapping(value = "/listar")
+    @RequestMapping(value = {"/", "/listar"})
     public ModelAndView listar() {
         HashMap<String, Object> mapa = new HashMap<String, Object>();
         mapa.put("nominas", repositorio.ObtenerTodos());

@@ -28,7 +28,7 @@ public class TipoIngresoDeduccionController extends CRUDController<TipoIngresoDe
     }
 
     @Override
-    @RequestMapping(value = "/listar")
+    @RequestMapping(value = {"/", "/listar"})
     public ModelAndView listar() {
         ModelAndView mv = new ModelAndView("tid/listar");
         mv.addObject("tids", repositorio.ObtenerTodos());

@@ -43,7 +43,7 @@ public class EmpleadoController extends CRUDController<Empleados> {
         this.repoNominas = repoNominas;
     }
 
-    @RequestMapping(value = "/listar")
+    @RequestMapping(value = {"/", "/listar"})
     public ModelAndView listar() {
         ModelAndView mv = new ModelAndView();
         mv.addObject("empleados", repositorio.ObtenerTodos());

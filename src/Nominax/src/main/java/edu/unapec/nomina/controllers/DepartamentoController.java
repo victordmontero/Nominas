@@ -28,7 +28,7 @@ public class DepartamentoController extends CRUDController<Departamentos>{
         super(repositorio);
     }
     
-    @RequestMapping(value = "/listar")
+    @RequestMapping(value = {"/", "/listar"})
     public ModelAndView listar(){
         ModelAndView mv = new ModelAndView();
         mv.addObject("departamentos",repositorio.ObtenerTodos());

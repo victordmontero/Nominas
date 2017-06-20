@@ -35,7 +35,7 @@ public class EmpDepController {
         this.repoDep = repoDep;
     }
 
-    @RequestMapping(value = "/listar")
+    @RequestMapping(value = {"/", "/listar"})
     public ModelAndView listar() {
         ModelAndView mv = new ModelAndView("empdep/listar");
         mv.addObject("empdeps", repositorio.ObtenerTodos());

@@ -34,7 +34,7 @@ public class TransaccionController extends CRUDController<Transacciones> {
     }
 
     @Override
-    @RequestMapping(value = "/listar")
+    @RequestMapping(value = {"/", "/listar"})
     public ModelAndView listar() {
         ModelAndView mv = new ModelAndView("transacciones/listar");
         mv.addObject("transacciones", repositorio.ObtenerTodos());

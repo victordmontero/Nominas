@@ -27,7 +27,7 @@ public class PuestoController extends CRUDController<Puestos> {
         super(repositorio);
     }
 
-    @RequestMapping(value = "/listar")
+    @RequestMapping(value = {"/", "/listar"})
     public ModelAndView listar() {
         ModelAndView mv = new ModelAndView();
         mv.addObject("puestos", repositorio.ObtenerTodos());
