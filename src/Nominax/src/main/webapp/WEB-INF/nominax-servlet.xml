@@ -96,6 +96,7 @@
     
     <bean id="transaccionController" class="edu.unapec.nomina.controllers.TransaccionController"></bean>
     
+    <bean id="securityController" class="edu.unapec.nomina.controllers.SecurityController"></bean>
     <!-- Controladores -->
 
 </beans>
