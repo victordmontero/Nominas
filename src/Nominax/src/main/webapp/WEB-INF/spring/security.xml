@@ -6,11 +6,12 @@
 
     <http auto-config="true">
         <intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
-        <form-login login-page="/login"
-                    default-target-url="/"
-                    authentication-failure-url="/login?error"
+        <form-login login-page="/login" 
+                    default-target-url="/" 
+                    authentication-failure-url="/login?error" 
                     username-parameter="email"
-                    password-parameter="password"/>
+                    password-parameter="password"
+        />
         <logout logout-success-url="/login?logout"/>
     </http>
 
