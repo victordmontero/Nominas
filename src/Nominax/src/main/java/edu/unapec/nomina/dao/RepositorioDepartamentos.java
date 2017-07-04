@@ -12,11 +12,13 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author phenom
  */
+@Repository
 public class RepositorioDepartamentos extends RepositorioBase<Departamentos> {
 
     @Autowired
