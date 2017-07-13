@@ -9,11 +9,13 @@ import edu.unapec.nomina.modelos.Puestos;
 import java.util.List;
 import org.hibernate.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author Phenom
  */
+@Repository
 public class RepositorioPuestos extends RepositorioBase<Puestos>{
 
     @Autowired
