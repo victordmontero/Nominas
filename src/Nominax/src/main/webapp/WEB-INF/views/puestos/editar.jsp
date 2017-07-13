@@ -4,11 +4,12 @@
     Author     : phenom
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags/" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="mvc" %>
 <t:layout>
-    
+
     <jsp:body>
         <div class="row">
             <div class="col-lg-12">
@@ -23,7 +24,8 @@
                         Editando ${puesto.descripcion}
                     </div>
                     <div class="panel-body">
-                        <mvc:form modelAttribute="puesto" action="/Nominax/puestos/editar" method="POST">
+                        <c:url value="/puestos/editar" var="EditarUrl"/>
+                        <mvc:form modelAttribute="puesto" action="${EditarUrl}" method="POST">
                             <input type="hidden" name="idPuesto" value="${puesto.idPuesto}"/>
                             <input type="hidden" name="estado" value="${puesto.estado}"/>
                             <div class="row">

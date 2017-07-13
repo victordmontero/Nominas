@@ -18,7 +18,7 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <a class="btn btn-success" href="/Nominax/tid/guardar">
+                <a class="btn btn-success" href="<c:url value="/tid/guardar"/>">
                     <i class="fa fa-plus"></i> Guardar</a>
             </div>
         </div>
@@ -42,6 +42,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <c:url value="/tid/eliminar" var="EliminarUrl" />
                                 <c:forEach var="tid" items="${tids}">
                                     <tr>
                                         <td>${tid.idTipoIngresoDeduccion}</td>
@@ -50,7 +51,7 @@
                                         <td>${tid.tipo}</td>
                                         <td>${tid.dependeSalario}</td>
                                         <td>
-                                            <a href="/Nominax/tid/eliminar/${tid.idTipoIngresoDeduccion}"><i class="fa fa-trash"></i></a>
+                                            <a href="${EliminarUrl}/${tid.idTipoIngresoDeduccion}"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 </c:forEach>

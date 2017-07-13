@@ -24,7 +24,7 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <a class="btn btn-success" href="/Nominax/empleados/guardar">
+                <a class="btn btn-success" href="<c:url value="/empleados/guardar"/>">
                     <i class="fa fa-plus"></i> Guardar</a>
             </div>
         </div>
@@ -51,21 +51,22 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <c:forEach var="e" items="${empleados}">
-                                <tr>
-                                    <td>${e.idEmpleado}</td>
-                                    <td>${e.cedula}</td>
-                                    <td><a href="/Nominax/empleados/editar/${e.idEmpleado}">
-                                            ${e.nombre}</a></td>
-                                    <td>${e.departamentos.nombre}</td>
-                                    <td>${e.puestos.descripcion}</td>
-                                    <td>${e.salario}</td>
-                                    <td>${e.nominas.descripcion}</td>
-                                    <th>
-                                        <a href="/Nominax/empleados/eliminar/${e.idEmpleado}"><i class="fa fa-trash"></i></a>
-                                    </th>
-                                </tr>
-                            </c:forEach>
+                                <c:url value="/empleados/eliminar" var="EliminarUrl"/>
+                                <c:forEach var="e" items="${empleados}">
+                                    <tr>
+                                        <td>${e.idEmpleado}</td>
+                                        <td>${e.cedula}</td>
+                                        <td><a href="/Nominax/empleados/editar/${e.idEmpleado}">
+                                                ${e.nombre}</a></td>
+                                        <td>${e.departamentos.nombre}</td>
+                                        <td>${e.puestos.descripcion}</td>
+                                        <td>${e.salario}</td>
+                                        <td>${e.nominas.descripcion}</td>
+                                        <th>
+                                            <a href="${EliminarUrl}/${e.idEmpleado}"><i class="fa fa-trash"></i></a>
+                                        </th>
+                                    </tr>
+                                </c:forEach>
                             </tbody>
                         </table>
                     </div>

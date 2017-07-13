@@ -4,11 +4,13 @@
     Author     : phenom
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags/" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="mvc" %>
 <t:layout>
-    
+
     <jsp:body>
         <div class="row">
             <div class="col-lg-12">
@@ -23,7 +25,8 @@
                         Nuevo tipo de nomina
                     </div>
                     <div class="panel-body">
-                        <mvc:form modelAttribute="nomina" action="guardar" method="POST">
+                        <c:url value="/nominas/guardar" var="GuardarUrl"/>
+                        <mvc:form modelAttribute="nomina" action="${GuardarUrl}" method="POST">
                             <input type="hidden" name="estado" value="true"/>
                             <div class="row">
                                 <div class="form-group col-lg-12">

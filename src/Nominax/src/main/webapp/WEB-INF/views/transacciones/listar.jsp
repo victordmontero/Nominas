@@ -21,7 +21,7 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <a class="btn btn-success" href="/Nominax/transacciones/nueva">
+                <a class="btn btn-success" href="<c:url value="/transacciones/nueva"/>">
                     <i class="fa fa-plus"></i> Nueva</a>
             </div>
         </div>

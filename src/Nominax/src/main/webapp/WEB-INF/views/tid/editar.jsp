@@ -4,11 +4,12 @@
     Author     : phenom
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags/" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="mvc" %>
 <t:layout>
-    
+
     <jsp:body>
         <div class="row">
             <div class="col-lg-12">
@@ -23,7 +24,8 @@
                         Editando ${tid.descripcion}
                     </div>
                     <div class="panel-body">
-                        <mvc:form modelAttribute="tid" action="/Nominax/tid/editar" method="POST">
+                        <c:url value="/tid/editar" var="EditarUrl"/>
+                        <mvc:form modelAttribute="tid" action="${EditarUrl}" method="POST">
                             <input type="hidden" name="idTipoIngresoDeduccion" value="${tid.idTipoIngresoDeduccion}"/>
                             <input type="hidden" name="estado" value="true"/>
                             <div class="row">
@@ -39,9 +41,9 @@
                                     <%--<mvc:input path="dependeSalario" cssClass="form-control"/>--%>
                                     <mvc:checkbox path="dependeSalario"/>
                                     <mvc:label path="dependeSalario">Depende de Salario</mvc:label>
+                                    </div>
                                 </div>
-                            </div>
-                            <button class="btn btn-success" type="submit">Guardar</button>
+                                <button class="btn btn-success" type="submit">Guardar</button>
                         </mvc:form>
                     </div>
                 </div>

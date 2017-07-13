@@ -4,6 +4,7 @@
     Author     : phenom
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags/" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="mvc" %>
@@ -23,7 +24,8 @@
                         Nuevo Tipo de Ingreso o Deduccion
                     </div>
                     <div class="panel-body">
-                        <mvc:form modelAttribute="tid" action="guardar" method="POST">
+                        <c:url value="/tid/guardar" var="GuardarUrl" />
+                        <mvc:form modelAttribute="tid" action="${GuardarUrl}" method="POST">
                             <input type="hidden" name="estado" value="true"/>
                             <div class="row">
                                 <div class="form-group col-lg-12">
