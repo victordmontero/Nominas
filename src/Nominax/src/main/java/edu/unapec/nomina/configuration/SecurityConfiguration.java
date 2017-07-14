@@ -19,22 +19,22 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-
+    
     @Autowired
     public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication().withUser("mortal").password("humano").roles("USER");
         auth.inMemoryAuthentication().withUser("admin").password("admin").roles("ADMIN");
     }
-
+    
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/", "/home").permitAll()
+                .antMatchers("/", "/home").access("hasRole('USER')")
                 .antMatchers("/empleados/**").access("hasRole('ADMIN')")
                 .and().formLogin().loginPage("/signin")
                 .usernameParameter("username").passwordParameter("password")
                 .and().csrf()
-                .and().exceptionHandling().accessDeniedPage("/denegado");
+                .and().exceptionHandling().accessDeniedPage("/denied");
     }
-
+    
 }

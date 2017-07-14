@@ -52,7 +52,7 @@
                             <h3 class="panel-title">Please Sign In</h3>
                         </div>
                         <div class="panel-body">
-                            <c:url var="loginUrl" value="/login" />
+                            <c:url var="loginUrl" value="/signin" />
                             <form action="${loginUrl}" method="post" role="form">
 
                                 <c:if test="${param.error != null}">
@@ -60,7 +60,7 @@
                                         <p>Invalid username and password.</p>
                                     </div>
                                 </c:if>
-                                <c:if test="${param.logout != null}">
+                                <c:if test="${param.signout != null}">
                                     <div class="alert alert-success">
                                         <p>You have been logged out successfully.</p>
                                     </div>
@@ -68,7 +68,7 @@
 
                                 <fieldset>
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Nombre de usuario" name="username" type="email" autofocus>
+                                        <input class="form-control" placeholder="Nombre de usuario" name="username" type="text" autofocus>
                                     </div>
                                     <div class="form-group">
                                         <input class="form-control" placeholder="Password" name="password" type="password" value="">
