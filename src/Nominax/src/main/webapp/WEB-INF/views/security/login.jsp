@@ -5,7 +5,6 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -49,29 +48,30 @@
                 <div class="col-md-4 col-md-offset-4">
                     <div class="login-panel panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Please Sign In</h3>
+                            <h3 class="panel-title">Iniciar Sesi&oacute;n</h3>
                         </div>
                         <div class="panel-body">
-                            <c:url var="loginUrl" value="/login" />
+                            <c:url var="loginUrl" value="/signin" />
                             <form action="${loginUrl}" method="post" role="form">
 
                                 <c:if test="${param.error != null}">
                                     <div class="alert alert-danger">
-                                        <p>Invalid username and password.</p>
+                                        <p>Nombre o contrase&ntilde;a invalida</p>
                                     </div>
                                 </c:if>
-                                <c:if test="${param.logout != null}">
+                                
+                                <c:if test="${param.signout != null}">
                                     <div class="alert alert-success">
-                                        <p>You have been logged out successfully.</p>
+                                        <p>Has cerrado la sesi&oacute;n correctamente</p>
                                     </div>
                                 </c:if>
 
                                 <fieldset>
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Nombre de usuario" name="username" type="email" autofocus>
+                                        <input class="form-control" placeholder="Nombre de usuario" name="username" type="text" autofocus>
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                                        <input class="form-control" placeholder="Contrase&ntilde;a" name="password" type="password" value="">
                                     </div>
                                     <!--<div class="checkbox">
                                         <label>
@@ -81,7 +81,7 @@
                                     <input type="hidden" name="${_csrf.parameterName}"   value="${_csrf.token}" />
                                     <!-- Change this to a button or input when using this as a form -->
 
-                                    <button type="submit" class="btn btn-lg btn-success btn-block">Login</button>
+                                    <button type="submit" class="btn btn-lg btn-success btn-block">Iniciar Sesi&oacute;n</button>
                                 </fieldset>
                             </form>
                         </div>

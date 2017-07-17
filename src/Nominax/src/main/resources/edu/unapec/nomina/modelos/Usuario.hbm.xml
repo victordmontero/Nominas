@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 14, 2017 11:56:20 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="edu.unapec.nomina.modelos.Usuario" table="Usuario" catalog="Nominas" optimistic-lock="version">
+        <id name="idUsuario" type="java.lang.Integer">
+            <column name="IdUsuario" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="25" unique="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="Password" length="60" not-null="true" />
+        </property>
+        <property name="activo" type="boolean">
+            <column name="Activo" not-null="true" />
+        </property>
+        <set name="roleses" table="Usuario_Rol" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="IdUsuario" not-null="true" />
+            </key>
+            <many-to-many entity-name="edu.unapec.nomina.modelos.Roles">
+                <column name="IdRol" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

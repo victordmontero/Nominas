@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
  *
  * @author phenom
  */
+@Controller
 @RequestMapping(value = "/tid")
 public class TipoIngresoDeduccionController extends CRUDController<TipoIngresoDeduccion> {
 

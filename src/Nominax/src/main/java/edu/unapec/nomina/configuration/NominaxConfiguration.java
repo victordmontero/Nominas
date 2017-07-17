@@ -5,10 +5,12 @@
  */
 package edu.unapec.nomina.configuration;
 
+import java.util.Properties;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.orm.hibernate3.LocalSessionFactoryBean;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -34,21 +36,40 @@ public class NominaxConfiguration extends WebMvcConfigurerAdapter {
 
         return viewResolver;
     }
-    
+
     @Bean
-    public BasicDataSource basicDataSource()
-    {
+    public BasicDataSource basicDataSource() {
         BasicDataSource basicDataSource = new BasicDataSource();
         basicDataSource.setDriverClassName("com.mysql.jdbc.Driver");
         basicDataSource.setUrl("jdbc:mysql://localhost:3306/Nominas");
         basicDataSource.setUsername("root");
         basicDataSource.setPassword("mysql");
-        
+
         return basicDataSource;
     }
     
-    //TODO los Bean Restantes
+    @Bean
+    public LocalSessionFactoryBean localSessionFactoryBean() {
+        LocalSessionFactoryBean localSessionFactoryBean = new LocalSessionFactoryBean();
+        localSessionFactoryBean.setDataSource(basicDataSource());
+        Properties prop = new Properties();
+        prop.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+        prop.setProperty("hibernate.current_session_context_class", "thread");
+        localSessionFactoryBean.setHibernateProperties(prop);
+        localSessionFactoryBean.setMappingResources(
+                "/edu/unapec/nomina/modelos/Departamentos.hbm.xml",
+                "/edu/unapec/nomina/modelos/Puestos.hbm.xml",
+                "/edu/unapec/nomina/modelos/Empleados.hbm.xml",
+                "/edu/unapec/nomina/modelos/EmpleadoDepartamento.hbm.xml",
+                "/edu/unapec/nomina/modelos/Transacciones.hbm.xml",
+                "/edu/unapec/nomina/modelos/TipoIngresoDeduccion.hbm.xml",
+                "/edu/unapec/nomina/modelos/Nominas.hbm.xml",
+                "/edu/unapec/nomina/modelos/Usuario.hbm.xml",
+                "/edu/unapec/nomina/modelos/Roles.hbm.xml");
 
+        return localSessionFactoryBean;
+    }
+    
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**")

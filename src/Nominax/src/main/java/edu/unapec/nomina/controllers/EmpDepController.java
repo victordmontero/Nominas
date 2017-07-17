@@ -11,6 +11,7 @@ import edu.unapec.nomina.modelos.Departamentos;
 import edu.unapec.nomina.modelos.EmpleadoDepartamento;
 import edu.unapec.nomina.modelos.Empleados;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
  *
  * @author phenom
  */
+@Controller
 @RequestMapping(value = "/empdep")
 public class EmpDepController {
 

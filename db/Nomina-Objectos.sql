@@ -66,3 +66,41 @@ CREATE TABLE EmpleadoDepartamento(
   FOREIGN KEY (IdEmpleado) REFERENCES Empleados(IdEmpleado),
   FOREIGN KEY (IdDepartamento) REFERENCES Departamentos(IdDepartamento)
 );
+
+CREATE TABLE Usuario(
+    IdUsuario INT PRIMARY KEY AUTO_INCREMENT,
+    Nombre VARCHAR(25) UNIQUE,
+    Password VARCHAR(60) NOT NULL,
+    Activo TINYINT(1) NOT NULL DEFAULT 1
+);
+
+CREATE TABLE Roles(
+    IdRol INT PRIMARY KEY AUTO_INCREMENT,
+    NombreRole VARCHAR(10) NOT NULL,
+    Estado TINYINT(1) NOT NULL DEFAULT 1
+);
+
+CREATE TABLE Usuario_Rol(
+    IdRol INT NOT NULL,
+    IdUsuario INT NOT NULL,
+    FOREIGN KEY (IdRol) REFERENCES Roles(IdRol),
+    FOREIGN KEY (IdUsuario) REFERENCES Usuario(IdUsuario),
+    PRIMARY KEY (IdRol, IdUsuario)
+);
+
+
+INSERT INTO Usuario (Nombre,Password)
+VALUES
+('admin','$2a$11$mTSFLSVlUC5KFBjIxQaMO.hEvO.RM0i191wQ54wjRk4CQQ3WrcOxq'),
+('mortal','$2a$11$mTSFLSVlUC5KFBjIxQaMO.hEvO.RM0i191wQ54wjRk4CQQ3WrcOxq');
+
+INSERT INTO Roles (NombreRole)
+VALUES
+('ADMIN'),
+('USER');
+
+INSERT INTO Usuario_Rol
+(IdRol,IdUsuario)
+VALUES
+(1,1),
+(2,2);
