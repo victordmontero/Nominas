@@ -33,45 +33,45 @@ import org.springframework.web.bind.annotation.PathVariable;
  * @author phenom
  */
 @Controller
-//@RequestMapping(value = "/security")
+@RequestMapping(value = "/security")
 public class SecurityController {
-
+    
     IRepositorio<Usuario> repo;
-
+    
     @Autowired
     RepositorioRoles repoRoles;
-
+    
     @Autowired
     public SecurityController(IRepositorio<Usuario> repositorio) {
         this.repo = repositorio;
     }
-
+    
     @RequestMapping(value = "/signin", method = RequestMethod.GET)
     public String signin() {
         return "security/login";
     }
-
+    
     @RequestMapping(value = "/signout")
     public String signout(HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null) {
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
-        return "redirect:signin?signout";
+        return "redirect:/security/signin?signout";
     }
-
+    
     @RequestMapping(value = "/denied")
     public String denied() {
         return "security/denied";
     }
-
+    
     @RequestMapping(value = {"/listar-usuarios"})
     public String listarUsuarios(ModelMap model) {
         List<Usuario> usuarios = repo.ObtenerTodos();
         model.addAttribute("usuarios", usuarios);
         return "security/listarUsuarios";
     }
-
+    
     @RequestMapping(value = "/nuevo-usuario")
     public String nuevoUsuario(ModelMap model) {
         Usuario u = new Usuario();
@@ -79,21 +79,21 @@ public class SecurityController {
         model.addAttribute("roles", repoRoles.ObtenerTodos());
         return "security/guardarUsuario";
     }
-
+    
     @RequestMapping(value = "/nuevo-usuario", method = RequestMethod.POST)
     public String nuevoUsuario(@Valid Usuario u, BindingResult result, ModelMap map) {
         PasswordEncoder encoder = new BCryptPasswordEncoder(11);
-
+        
         if (result.hasErrors()) {
-            return "redirect:/listar-usuarios";
+            return "redirect:/security/listar-usuarios";
         }
-
+        
         u.setPassword(encoder.encode(u.getPassword()));
         repo.Guardar(u);
-
-        return "redirect:/listar-usuarios";
+        
+        return "redirect:/security/listar-usuarios";
     }
-
+    
     @RequestMapping(value = "/editar-usuario/{id}")
     public String editarUsuario(@PathVariable int id, ModelMap model) {
         Usuario usuario = repo.ObtenerUno(id);
@@ -103,33 +103,41 @@ public class SecurityController {
         model.addAttribute("roles", repoRoles.ObtenerTodos());
         return "security/editarUsuario";
     }
-
+    
     @RequestMapping(value = "/editar-usuario", method = RequestMethod.POST)
     public String editarUsuario(@Valid Usuario u,
             BindingResult result, ModelMap map) {
         PasswordEncoder encoder = new BCryptPasswordEncoder(11);
-
+        
         if (result.hasErrors()) {
             return "security/editarUsuario";
         }
-
+        
         u.setPassword(encoder.encode(u.getPassword()));
+        
+        String var = (String) u.getRoleses().toArray()[0];
+        Roles r = repoRoles.ObtenerUno(Integer.parseInt(var));
+        Set<Roles> set = new HashSet<Roles>();
+        set.add(r);
+        
+        u.setRoleses(set);
+        
         repo.Editar(u);
-        return "redirect:/listar-usuarios";
+        return "redirect:/security/listar-usuarios";
     }
-
+    
     @RequestMapping(value = "/eliminar-usuario/{id}")
     public String eliminarUsuario(@PathVariable int id) {
         repo.Eliminar(repo.ObtenerUno(id));
-        return "redirect:/listar-usuarios";
+        return "redirect:/security/listar-usuarios";
     }
-
+    
     public RepositorioRoles getRepoRoles() {
         return repoRoles;
     }
-
+    
     public void setRepoRoles(RepositorioRoles repoRoles) {
         this.repoRoles = repoRoles;
     }
-
+    
 }

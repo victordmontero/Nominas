@@ -40,10 +40,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <c:url value="/eliminar-usuario" var="EliminarUrl" />
+                                <c:url value="/security/eliminar-usuario" var="EliminarUrl" />
                                 <c:forEach var="usuario" items="${usuarios}">
                                     <tr>
-                                        <td><a href="<c:url value="/editar-usuario" />/${usuario.idUsuario}">
+                                        <td><a href="<c:url value="/security/editar-usuario" />/${usuario.idUsuario}">
                                                 ${usuario.nombre}</a></td>
                                         <td>
                                             <a href="${EliminarUrl}/${usuario.idUsuario}"><i class="fa fa-trash"></i></a>

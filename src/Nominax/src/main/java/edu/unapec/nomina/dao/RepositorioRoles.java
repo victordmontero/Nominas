@@ -20,8 +20,8 @@ import org.springframework.stereotype.Repository;
  * @author phenom
  */
 @Repository
-public class RepositorioRoles extends RepositorioBase<Roles>{
-    
+public class RepositorioRoles extends RepositorioBase<Roles> {
+
     @Autowired
     public RepositorioRoles(SessionFactory sf) {
         super(sf);
@@ -54,7 +54,7 @@ public class RepositorioRoles extends RepositorioBase<Roles>{
     public Roles ObtenerUno(int id) {
         Session session = sessionFactory.openSession();
         Criteria crit = session.createCriteria(Roles.class);
-        Roles rol = (Roles)crit.add(Restrictions.eq("idRol", id));
+        Roles rol = (Roles) crit.add(Restrictions.eq("idRol", id)).uniqueResult();
         session.close();
         return rol;
     }
@@ -65,5 +65,5 @@ public class RepositorioRoles extends RepositorioBase<Roles>{
         session.close();
         return roles;
     }
-    
+
 }

@@ -25,7 +25,7 @@
                         Editar ${usuario.nombre}
                     </div>
                     <div class="panel-body">
-                        <c:url value="/editar-usuario" var="EditarUrl" />
+                        <c:url value="/security/editar-usuario" var="EditarUrl" />
                         <mvc:form modelAttribute="usuario" action="${EditarUrl}" method="POST">
                             <input type="hidden" name="estado" value="true"/>
                             <input type="hidden" name="idUsuario" value="${usuario.idUsuario}"/>

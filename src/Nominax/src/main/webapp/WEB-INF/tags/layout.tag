@@ -113,7 +113,7 @@
                             <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                             </li>
                             <li class="divider"></li>-->
-                            <li><a href="<c:url value="/signout"/>"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                            <li><a href="<c:url value="/security/signout"/>"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                             </li>
                         </ul>
                         <!-- /.dropdown-user -->
@@ -138,9 +138,9 @@
                             </li>
 
                             <!-- Aqui el menu lateral -->
-                            <li>
+                            <%--<li>
                                 <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                            </li>
+                            </li>--%>
                             <li>
                                 <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Administracion<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
@@ -168,7 +168,7 @@
                                     <%-- Especial para la seguridad --%>
                                     <sec:authorize access="hasRole('ADMIN')">
                                         <li>
-                                            <a href="<c:url value="/listar-usuarios" />">Usuarios</a>
+                                            <a href="<c:url value="/security/listar-usuarios" />">Usuarios</a>
                                         </li>
                                     </sec:authorize>
                                 </ul>

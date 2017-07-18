@@ -38,14 +38,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/resources/**").permitAll()
-                .antMatchers("/signin").permitAll()
-                .antMatchers("/signout").permitAll()
+                .antMatchers("/security/signin").permitAll()
+                .antMatchers("/security/signout").permitAll()
+                .antMatchers("/security/**").access("hasRole('ADMIN')")
                 .antMatchers("/**").authenticated()
-                .and().formLogin().loginPage("/signin")
+                .and().formLogin().loginPage("/security/signin")
                 .loginProcessingUrl("/signin")
                 .usernameParameter("username").passwordParameter("password")
                 .and().csrf()
-                .and().exceptionHandling().accessDeniedPage("/denied");
+                .and().exceptionHandling().accessDeniedPage("/security/denied");
     }
 
     @Bean
