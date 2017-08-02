@@ -10,7 +10,11 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags/" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="mvc" %>
 <t:layout>
-
+    <jsp:attribute name="scripts">
+        <script src="<c:url value="/resources/vendor/jqueryvalidation/jquery.validate.min.js"/>" type="text/javascript"></script>
+        <script src="<c:url value="/resources/nominax/js/jqueryValidation.js"/>" type="text/javascript"></script>
+        <script src="<c:url value="/resources/vendor/jqueryvalidation/messages_es.js"/>" type="text/javascript"></script>
+    </jsp:attribute>
     <jsp:body>
         <div class="row">
             <div class="col-lg-12">
@@ -26,12 +30,12 @@
                     </div>
                     <div class="panel-body">
                         <c:url value="/nominas/guardar" var="GuardarUrl"/>
-                        <mvc:form modelAttribute="nomina" action="${GuardarUrl}" method="POST">
+                        <mvc:form modelAttribute="nomina" action="${GuardarUrl}" method="POST" cssClass="requiredForm">
                             <input type="hidden" name="estado" value="true"/>
                             <div class="row">
                                 <div class="form-group col-lg-12">
                                     <mvc:label path="descripcion">Descripci&oacute;n</mvc:label>
-                                    <mvc:input path="descripcion" cssClass="form-control" />
+                                    <mvc:input maxlength="50" path="descripcion" cssClass="form-control" />
                                 </div>
                             </div>
                             <button class="btn btn-success" type="submit">Guardar</button>

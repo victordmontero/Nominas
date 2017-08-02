@@ -9,7 +9,11 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags/" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="mvc" %>
 <t:layout>
-
+    <jsp:attribute name="scripts">
+        <script src="<c:url value="/resources/vendor/jqueryvalidation/jquery.validate.min.js"/>" type="text/javascript"></script>
+        <script src="<c:url value="/resources/nominax/js/jqueryValidation.js"/>" type="text/javascript"></script>
+        <script src="<c:url value="/resources/vendor/jqueryvalidation/messages_es.js"/>" type="text/javascript"></script>
+    </jsp:attribute>
     <jsp:body>
         <div class="row">
             <div class="col-lg-12">
@@ -25,21 +29,21 @@
                     </div>
                     <div class="panel-body">
                         <c:url value="/puestos/editar" var="EditarUrl"/>
-                        <mvc:form modelAttribute="puesto" action="${EditarUrl}" method="POST">
+                        <mvc:form modelAttribute="puesto" action="${EditarUrl}" method="POST" cssClass="requiredForm">
                             <input type="hidden" name="idPuesto" value="${puesto.idPuesto}"/>
                             <input type="hidden" name="estado" value="${puesto.estado}"/>
                             <div class="row">
                                 <div class="form-group col-lg-12">
                                     <mvc:label path="descripcion">Descripci&oacute;n</mvc:label>
-                                    <mvc:input path="descripcion" cssClass="form-control" />
+                                    <mvc:input maxlength="50" path="descripcion" cssClass="form-control" />
                                 </div>
                                 <div class="form-group col-lg-6">
                                     <mvc:label path="salarioMin">Salario M&iacute;nimo</mvc:label>
-                                    <mvc:input path="salarioMin" cssClass="form-control" />
+                                    <mvc:input maxlength="12" path="salarioMin" cssClass="form-control" />
                                 </div>
                                 <div class="form-group col-lg-6">
                                     <mvc:label path="salarioMax">Salario M&aacute;ximo</mvc:label>
-                                    <mvc:input path="salarioMax" cssClass="form-control" />
+                                    <mvc:input maxlength="12" path="salarioMax" cssClass="form-control" />
                                 </div>
                                 <div class="form-group col-lg-6">
                                     <mvc:label path="riesgo">Riesgo</mvc:label>

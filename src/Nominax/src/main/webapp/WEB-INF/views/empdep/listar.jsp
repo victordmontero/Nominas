@@ -10,12 +10,16 @@
 
 <t:layout>
     <jsp:attribute name="styles">
-
+        <link href="<c:url value="/resources/vendor/datatables/css/jquery.dataTables.css"/>" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="<c:url value="/resources/vendor/datatables-plugins/dataTables.bootstrap.css"/>"/>
     </jsp:attribute>
 
     <jsp:attribute name="scripts">
-
+        <script src="<c:url value="/resources/vendor/datatables/js/jquery.dataTables.js"/>"></script>
+        <script src="<c:url value="/resources/vendor/datatables-plugins/dataTables.bootstrap.js" />"></script>
+        <script src="<c:url value="/resources/nominax/js/datatable.js"/>" type="text/javascript"></script>
     </jsp:attribute>
+
     <jsp:body>
         <div class="row">
             <div class="col-lg-12">
@@ -37,7 +41,7 @@
                     </div>
                     <!-- /.panel-heading -->
                     <div class="panel-body">
-                        <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-puestos">
+                        <table width="100%" class="table table-striped table-bordered table-hover datatable" id="dataTables-puestos">
                             <thead>
                                 <tr>
                                     <th>Id de Empleado</th>
@@ -49,20 +53,20 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <c:forEach var="e" items="${empdeps}">
-                                <tr>
-                                    <td>${e.id.idEmpleado}</td>
-                                    <td>${e.id.idDepartamento}</td>
-                                    <td>${e.empleados.cedula}</td>
-                                    <td><a href="/Nominax/empdep/editar/${e.id.idEmpleado}/${e.id.idDepartamento}">
-                                            ${e.empleados.nombre}</a></td>
-                                    <td><a href="/Nominax/empdep/editar/${e.id.idEmpleado}/${e.id.idDepartamento}">
-                                            ${e.departamentos.nombre}</a></td>
-                                    <th>
-                                        <a href="/Nominax/empdep/eliminar/${e.id.idEmpleado}/${e.id.idDepartamento}"><i class="fa fa-trash"></i></a>
-                                    </th>
-                                </tr>
-                            </c:forEach>
+                                <c:forEach var="e" items="${empdeps}">
+                                    <tr>
+                                        <td>${e.id.idEmpleado}</td>
+                                        <td>${e.id.idDepartamento}</td>
+                                        <td>${e.empleados.cedula}</td>
+                                        <td><a href="/Nominax/empdep/editar/${e.id.idEmpleado}/${e.id.idDepartamento}">
+                                                ${e.empleados.nombre}</a></td>
+                                        <td><a href="/Nominax/empdep/editar/${e.id.idEmpleado}/${e.id.idDepartamento}">
+                                                ${e.departamentos.nombre}</a></td>
+                                        <th>
+                                            <a href="/Nominax/empdep/eliminar/${e.id.idEmpleado}/${e.id.idDepartamento}"><i class="fa fa-trash"></i></a>
+                                        </th>
+                                    </tr>
+                                </c:forEach>
                             </tbody>
                         </table>
                     </div>

@@ -69,6 +69,9 @@ public class DepartamentoController extends CRUDController<Departamentos>{
         return "redirect:/departamentos/listar";
     }
     
-    
+    @RequestMapping(value = "/consulta")
+    public String consultar() {
+        return "departamentos/consulta";
+    }
 }
     

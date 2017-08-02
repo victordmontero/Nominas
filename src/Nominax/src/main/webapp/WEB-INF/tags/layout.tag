@@ -175,30 +175,6 @@
                                 <!-- /.nav-second-level -->
                             </li>
                             <li>
-                                <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Consultas<span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="Contro">Empleados</a>
-                                    </li>
-                                    <li>
-                                        <a href="morris.html">Departamentos</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Puestos</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Tipos de Ingresos</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Deducciones</a>
-                                    </li>
-                                    <%-- Especial para la seguridad --%>
-                                    <li>
-                                        <a href="#">Usuarios</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
                                 <a href="tables.html"><i class="fa fa-table fa-fw"></i> Reportes</a>
                             </li>
                             <%-- 

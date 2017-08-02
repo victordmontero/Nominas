@@ -10,6 +10,17 @@
 
 <t:layout>
 
+    <jsp:attribute name="styles">
+        <link href="<c:url value="/resources/vendor/datatables/css/jquery.dataTables.css"/>" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="<c:url value="/resources/vendor/datatables-plugins/dataTables.bootstrap.css"/>"/>
+    </jsp:attribute>
+
+    <jsp:attribute name="scripts">
+        <script src="<c:url value="/resources/vendor/datatables/js/jquery.dataTables.js"/>"></script>
+        <script src="<c:url value="/resources/vendor/datatables-plugins/dataTables.bootstrap.js" />"></script>
+        <script src="<c:url value="/resources/nominax/js/datatable.js"/>" type="text/javascript"></script>
+    </jsp:attribute>
+
     <jsp:body>
         <div class="row">
             <div class="col-lg-12">
@@ -32,7 +43,7 @@
                     </div>
                     <!-- /.panel-heading -->
                     <div class="panel-body">
-                        <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-puestos">
+                        <table width="100%" class="table table-striped table-bordered table-hover datatable" id="dataTables-puestos">
                             <thead>
                                 <tr>
                                     <th>Nombre</th>

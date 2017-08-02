@@ -31,7 +31,7 @@
                             <div class="row">
                                 <div class="form-group col-lg-12">
                                     <mvc:label path="descripcion">Descripci&oacute;n</mvc:label>
-                                    <mvc:input path="descripcion" cssClass="form-control" />
+                                    <mvc:input maxlength="50" path="descripcion" cssClass="form-control" />
                                 </div>
                                 <div class="form-group col-lg-6">
                                     <mvc:label path="tipo">Tipo</mvc:label>

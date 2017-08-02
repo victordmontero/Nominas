@@ -4,11 +4,16 @@
     Author     : phenom
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags/" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="mvc" %>
 <t:layout>
-    
+    <jsp:attribute name="scripts">
+        <script src="<c:url value="/resources/vendor/jqueryvalidation/jquery.validate.min.js"/>" type="text/javascript"></script>
+        <script src="<c:url value="/resources/nominax/js/jqueryValidation.js"/>" type="text/javascript"></script>
+        <script src="<c:url value="/resources/vendor/jqueryvalidation/messages_es.js"/>" type="text/javascript"></script>
+    </jsp:attribute>
     <jsp:body>
         <div class="row">
             <div class="col-lg-12">
@@ -24,16 +29,16 @@
                     </div>
                     <div class="panel-body">
                         <c:url value="/departamentos/guadar" var="GuadarUrl"/>
-                        <mvc:form modelAttribute="departamento" action="${GuadarUrl}" method="POST">
+                        <mvc:form modelAttribute="departamento" action="${GuadarUrl}" method="POST" cssClass="requiredForm">
                             <input type="hidden" name="estado" value="true"/>
                             <div class="row">
                                 <div class="form-group col-lg-6">
                                     <mvc:label path="nombre">Nombre</mvc:label>
-                                    <mvc:input path="nombre" cssClass="form-control" />
+                                    <mvc:input maxlength="50" path="nombre" cssClass="form-control" />
                                 </div>
                                 <div class="form-group col-lg-6">
                                     <mvc:label path="ubicacion">Ubicacion</mvc:label>
-                                    <mvc:input path="ubicacion" cssClass="form-control" />
+                                    <mvc:input maxlength="25" path="ubicacion" cssClass="form-control" />
                                 </div>
                             </div>
                             <button class="btn btn-success" type="submit">Guardar</button>
