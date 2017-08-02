@@ -29,7 +29,7 @@
                     </div>
                     <div class="panel-body">
                         <c:url value="/empleados/editar" var="EditarUrl"/>
-                        <mvc:form modelAttribute="empleado" action="${EditarUrl}" method="POST" cssClass="requiredForm">
+                        <mvc:form modelAttribute="empleado" action="${EditarUrl}" method="POST" cssClass="empleadoVal">
                             <div class="row">
                                 <div class="form-group col-lg-6">
                                     <mvc:label path="cedula">Cedula</mvc:label>

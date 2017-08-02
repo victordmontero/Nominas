@@ -10,6 +10,11 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="mvc" %>
 
 <t:layout>
+    <jsp:attribute name="scripts">
+        <script src="<c:url value="/resources/vendor/jqueryvalidation/jquery.validate.min.js"/>" type="text/javascript"></script>
+        <script src="<c:url value="/resources/nominax/js/jqueryValidation.js"/>" type="text/javascript"></script>
+        <script src="<c:url value="/resources/vendor/jqueryvalidation/messages_es.js"/>" type="text/javascript"></script>
+    </jsp:attribute>
 
     <jsp:body>
         <div class="row">
@@ -26,7 +31,7 @@
                     </div>
                     <div class="panel-body">
                         <c:url value="/security/editar-usuario" var="EditarUrl" />
-                        <mvc:form modelAttribute="usuario" action="${EditarUrl}" method="POST">
+                        <mvc:form modelAttribute="usuario" action="${EditarUrl}" method="POST" cssClass="usuarioVal">
                             <input type="hidden" name="estado" value="true"/>
                             <input type="hidden" name="idUsuario" value="${usuario.idUsuario}"/>
                             <div class="row">
@@ -37,6 +42,10 @@
                                 <div class="form-group col-lg-6">
                                     <mvc:label path="password">Contrase&ntilde;a</mvc:label>
                                     <mvc:password path="password" cssClass="form-control" />
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label for="repassword">Reingresar Contrase&ntilde;a</label>
+                                    <input type="password" name="repassword" class="form-control"/>
                                 </div>
                                 <div class="form-group col-lg-6">
                                     <mvc:label path="roleses">Roles</mvc:label>

@@ -46,7 +46,7 @@ public class DepartamentoController extends CRUDController<Departamentos>{
     @RequestMapping(value = "/guardar",method = RequestMethod.POST)
     public String guardar(Departamentos departamento){
         repositorio.Guardar(departamento);
-        return "redirect:listar";
+        return "redirect:/departamentos/listar";
     }
     
     @RequestMapping(value = "/editar/{id}")

@@ -30,7 +30,7 @@
                     </div>
                     <div class="panel-body">
                         <c:url value="/departamentos/editar" var="EditarUrl" />
-                        <mvc:form modelAttribute="departamento" action="${EditarUrl}" method="POST" cssClass="requiredForm">
+                        <mvc:form modelAttribute="departamento" action="${EditarUrl}" method="POST" cssClass="departamentoVal">
                             <input type="hidden" name="idDepartamento" value="${departamento.idDepartamento}"/>
                             <input type="hidden" name="estado" value="${departamento.estado}"/>
                             <div class="row">

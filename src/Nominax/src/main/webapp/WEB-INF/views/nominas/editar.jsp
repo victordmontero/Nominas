@@ -29,13 +29,13 @@
                     </div>
                     <div class="panel-body">
                         <c:url value="/nominas/editar" var="EditarUrl"/>
-                        <mvc:form modelAttribute="nomina" action="${EditarUrl}" method="POST" cssClass="requiredForm">
+                        <mvc:form modelAttribute="nomina" action="${EditarUrl}" method="POST" cssClass="nominaVal">
                             <input type="hidden" name="idNomina" value="${nomina.idNomina}"/>
                             <input type="hidden" name="estado" value="${nomina.estado}"/>
                             <div class="row">
                                 <div class="form-group col-lg-12">
                                     <mvc:label path="descripcion">Descripci&oacute;n</mvc:label>
-                                    <mvc:input maxlength="50" path="descripcion" cssClass="form-control" />
+                                    <mvc:input path="descripcion" cssClass="form-control" />
                                 </div>
                             </div>
                             <button class="btn btn-success" type="submit">Guardar</button>

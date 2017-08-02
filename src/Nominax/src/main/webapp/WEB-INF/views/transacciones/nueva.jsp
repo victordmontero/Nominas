@@ -11,7 +11,11 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@page import="java.util.Date" %>
 <t:layout>
-
+    <jsp:attribute name="scripts">
+        <script src="<c:url value="/resources/vendor/jqueryvalidation/jquery.validate.min.js"/>" type="text/javascript"></script>
+        <script src="<c:url value="/resources/nominax/js/jqueryValidation.js"/>" type="text/javascript"></script>
+        <script src="<c:url value="/resources/vendor/jqueryvalidation/messages_es.js"/>" type="text/javascript"></script>
+    </jsp:attribute>
     <jsp:body>
         <div class="row">
             <div class="col-lg-12">
@@ -27,7 +31,7 @@
                     </div>
                     <div class="panel-body">
                         <c:url value="/transacciones/nueva" var="NuevaUrl" />
-                        <mvc:form modelAttribute="transaccion" action="${NuevaUrl}" method="POST">
+                        <mvc:form modelAttribute="transaccion" action="${NuevaUrl}" method="POST" cssClass="transaccionVal">
                             <c:set var="resultDateString"/>
                             <fmt:formatDate value="${transaccion.fecha}" pattern="MM/dd/yyyy" var="resultDateString" />
 

@@ -65,7 +65,7 @@ public class SecurityController {
         return "security/denied";
     }
     
-    @RequestMapping(value = {"/listar-usuarios"})
+    @RequestMapping(value = {"/","/listar-usuarios"})
     public String listarUsuarios(ModelMap model) {
         List<Usuario> usuarios = repo.ObtenerTodos();
         model.addAttribute("usuarios", usuarios);

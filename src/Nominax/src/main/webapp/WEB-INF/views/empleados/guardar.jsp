@@ -30,7 +30,7 @@
                     </div>
                     <div class="panel-body">
                         <c:url value="/empleados/guardar" var="GuardarUrl" />
-                        <mvc:form modelAttribute="empleado" action="${GuardarUrl}" method="POST" cssClass="requiredForm">
+                        <mvc:form modelAttribute="empleado" action="${GuardarUrl}" method="POST" cssClass="empleadoVal">
                             <input type="hidden" name="estado" value="true"/>
                             <div class="row">
                                 <div class="form-group col-lg-6">

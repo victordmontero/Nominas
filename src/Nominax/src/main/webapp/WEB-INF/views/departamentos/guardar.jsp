@@ -28,8 +28,8 @@
                         Nuevo Departamento
                     </div>
                     <div class="panel-body">
-                        <c:url value="/departamentos/guadar" var="GuadarUrl"/>
-                        <mvc:form modelAttribute="departamento" action="${GuadarUrl}" method="POST" cssClass="requiredForm">
+                        <c:url value="/departamentos/guardar" var="GuadarUrl"/>
+                        <mvc:form modelAttribute="departamento" action="${GuadarUrl}" method="POST" cssClass="departamentoVal">
                             <input type="hidden" name="estado" value="true"/>
                             <div class="row">
                                 <div class="form-group col-lg-6">

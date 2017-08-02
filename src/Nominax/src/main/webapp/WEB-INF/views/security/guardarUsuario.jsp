@@ -10,6 +10,12 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="mvc" %>
 
 <t:layout>
+    
+    <jsp:attribute name="scripts">
+        <script src="<c:url value="/resources/vendor/jqueryvalidation/jquery.validate.min.js"/>" type="text/javascript"></script>
+        <script src="<c:url value="/resources/nominax/js/jqueryValidation.js"/>" type="text/javascript"></script>
+        <script src="<c:url value="/resources/vendor/jqueryvalidation/messages_es.js"/>" type="text/javascript"></script>
+    </jsp:attribute>
 
     <jsp:body>
         <div class="row">
@@ -25,8 +31,8 @@
                         Nuevo Usuario
                     </div>
                     <div class="panel-body">
-                        <c:url value="/nuevo-usuario" var="GuardarUrl" />
-                        <mvc:form modelAttribute="usuario" action="${GuardarUrl}" method="POST">
+                        <c:url value="/security/nuevo-usuario" var="GuardarUrl" />
+                        <mvc:form modelAttribute="usuario" action="${GuardarUrl}" method="POST" cssClass="usuarioVal">
                             <input type="hidden" name="estado" value="true"/>
                             <div class="row">
                                 <div class="form-group col-lg-6">
@@ -38,8 +44,12 @@
                                     <mvc:password path="password" cssClass="form-control" />
                                 </div>
                                 <div class="form-group col-lg-6">
+                                    <label for="repassword">Reingresar Contrase&ntilde;a</label>
+                                    <input type="password" name="repassword" class="form-control"/>
+                                </div>
+                                <div class="form-group col-lg-6">
                                     <mvc:label path="roleses">Roles</mvc:label>
-                                    <mvc:select path="roleses" cssClass="form-control" items="${roles}" itemLabel="nombreRole" itemValue="idRol" multiple="true" />
+                                    <mvc:select path="roleses" cssClass="form-control" items="${roles}" itemLabel="nombreRole" itemValue="idRol"/>
                                 </div>
                             </div>
                             <button class="btn btn-success" type="submit">Guardar</button>
