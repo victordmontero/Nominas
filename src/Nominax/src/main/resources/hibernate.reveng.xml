@@ -41,7 +41,7 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="Nominas"/>
-  <table-filter match-name="Roles"/>
   <table-filter match-name="Usuario"/>
+  <table-filter match-name="Roles"/>
   <table-filter match-name="Usuario_Rol"/>
 </hibernate-reverse-engineering>

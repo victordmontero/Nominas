@@ -104,3 +104,27 @@ INSERT INTO Usuario_Rol
 VALUES
 (1,1),
 (2,2);
+
+DELIMITER .
+
+CREATE PROCEDURE RerporteNominas(
+    DepId INT
+)
+BEGIN
+  SELECT E.Nombre,
+        E.Cedula,
+        P.Descripcion Puesto,
+        E.Salario,
+        D.Nombre Departamento,
+        N.Descripcion Nomina
+    FROM Empleados E
+    JOIN Departamentos D
+    ON E.IdDepartamento = D.IdDepartamento
+    JOIN Nominas N
+    ON N.IdNomina = E.IdNomina
+    JOIN Puestos P
+    ON P.IdPuesto = E.IdPuesto
+    WHERE D.IdDepartamento = DepId
+END.
+
+DELIMITER ;

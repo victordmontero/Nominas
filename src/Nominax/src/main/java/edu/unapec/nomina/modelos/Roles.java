@@ -1,5 +1,5 @@
 package edu.unapec.nomina.modelos;
-// Generated Jul 14, 2017 11:56:20 PM by Hibernate Tools 4.3.1
+// Generated Aug 3, 2017 10:53:13 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;

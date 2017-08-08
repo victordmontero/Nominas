@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jul 14, 2017 11:56:20 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Aug 3, 2017 10:53:14 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="edu.unapec.nomina.modelos.Usuario" table="Usuario" catalog="Nominas" optimistic-lock="version">
         <id name="idUsuario" type="java.lang.Integer">
@@ -17,7 +17,7 @@
         <property name="activo" type="boolean">
             <column name="Activo" not-null="true" />
         </property>
-        <set name="roleses" table="Usuario_Rol" inverse="true" lazy="false" fetch="select">
+        <set name="roleses" table="Usuario_Rol" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="IdUsuario" not-null="true" />
             </key>
