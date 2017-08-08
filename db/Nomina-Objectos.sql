@@ -91,8 +91,8 @@ CREATE TABLE Usuario_Rol(
 
 INSERT INTO Usuario (Nombre,Password)
 VALUES
-('admin','$2a$11$mTSFLSVlUC5KFBjIxQaMO.hEvO.RM0i191wQ54wjRk4CQQ3WrcOxq'),
-('mortal','$2a$11$mTSFLSVlUC5KFBjIxQaMO.hEvO.RM0i191wQ54wjRk4CQQ3WrcOxq');
+('admin','$2a$11$ojk0NAKTk0Aru/djGz2k5eXvQ.kRnKAFLEtI2zDDDo94bb73I9a6O'), --123abc
+('mortal','$2a$11$ojk0NAKTk0Aru/djGz2k5eXvQ.kRnKAFLEtI2zDDDo94bb73I9a6O'); --123abc
 
 INSERT INTO Roles (NombreRole)
 VALUES
@@ -105,13 +105,11 @@ VALUES
 (1,1),
 (2,2);
 
-DELIMITER .
+DELIMITER :
 
-CREATE PROCEDURE RerporteNominas(
-    DepId INT
-)
+CREATE PROCEDURE ReporteNominas(DepId INT)
 BEGIN
-  SELECT E.Nombre,
+    SELECT E.Nombre,
         E.Cedula,
         P.Descripcion Puesto,
         E.Salario,
@@ -124,7 +122,7 @@ BEGIN
     ON N.IdNomina = E.IdNomina
     JOIN Puestos P
     ON P.IdPuesto = E.IdPuesto
-    WHERE D.IdDepartamento = DepId
-END.
+    WHERE (DepId IS NULL OR D.IdDepartamento = DepId);
+END:
 
 DELIMITER ;

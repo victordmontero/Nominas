@@ -20,7 +20,7 @@
         <property name="estado" type="boolean">
             <column name="Estado" not-null="true" />
         </property>
-        <set name="transaccioneses" table="Transacciones" inverse="true" lazy="true" fetch="select">
+        <set name="transaccioneses" table="Transacciones" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="IdIngresoDeduccion" not-null="true" />
             </key>

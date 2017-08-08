@@ -175,7 +175,7 @@
                                 <!-- /.nav-second-level -->
                             </li>
                             <li>
-                                <a href="tables.html"><i class="fa fa-table fa-fw"></i> Reportes</a>
+                                <a href="<c:url value="/reporte/"/>"><i class="fa fa-table fa-fw"></i> Reportes</a>
                             </li>
                             <%-- 
                             <li>

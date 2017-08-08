@@ -26,17 +26,16 @@
                         ${titulo}
                     </div>
                     <div class="panel-body">
-                        <c:url value="/departamentos/editar" var="EditarUrl" />
-                        <form action="${EditarUrl}" method="POST">
+                        <c:url value="/reporte/generar" var="EditarUrl" />
+                        <form action="${EditarUrl}" method="GET">
                             <div class="row">
                                 <div class="form-group col-lg-6">
-                                    <mvc:label path="nominas.idNomina">Nomina</mvc:label>
-                                    <mvc:select path="nominas.idNomina" cssClass="form-control" items="${nominas}" itemLabel="descripcion" itemValue="idNomina"/>
-                                </div>
-                                <div class="form-group col-lg-6">
-                                    <mvc:label path="departamentos.idDepartamento">Departamento</mvc:label>
-                                    <mvc:select path="departamentos.idDepartamento" cssClass="form-control" items="${departamentos}"
-                                                itemLabel="nombre" itemValue="idDepartamento"/>
+                                    <label for="idDep">Departamento</label>
+                                    <select name="idDep" class="form-control">
+                                        <c:forEach items="${departamentos}" var="dep">
+                                            <option value="${dep.idDepartamento}">${dep.nombre}</option>
+                                        </c:forEach>
+                                    </select>
                                 </div>
                             </div>
                             <button class="btn btn-success" type="submit">Generar Reporte</button>

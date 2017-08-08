@@ -5,9 +5,13 @@
  */
 package edu.unapec.nomina.controllers;
 
+import edu.unapec.nomina.dao.IRepositorio;
+import edu.unapec.nomina.dao.RepositorioDepartamentos;
+import edu.unapec.nomina.modelos.Departamentos;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.sql.Connection;
 import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpServletResponse;
@@ -17,9 +21,13 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
+import org.apache.commons.dbcp.BasicDataSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
@@ -29,20 +37,37 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping(value = "/reporte")
 public class ReporteController {
 
-    public ReporteController() {
+    IRepositorio<Departamentos> repoDep;
+    Connection conn;
+
+    @Autowired
+    public ReporteController(RepositorioDepartamentos dep, BasicDataSource conn) {
+        try {
+            this.conn = conn.getConnection();
+            repoDep = dep;
+        } catch (Exception e) {
+
+        }
     }
 
-    @RequestMapping(value = {"/", "/index"})
+    @RequestMapping(value = {"/"})
+    public ModelAndView Generar() {
+        ModelAndView mv = new ModelAndView("reporte/generar");
+        mv.addObject("departamentos", repoDep.ObtenerTodos());
+        return mv;
+    }
+
+    @RequestMapping(value = {"/generar"})
     @ResponseBody
-    public void Generar(HttpServletResponse response) throws JRException, IOException {
-        InputStream inputStream = this.getClass().getResourceAsStream("/jasperreports/reporte.jasper");
-        Map<String,Object> params = new HashMap<String, Object>();
-        JasperReport jasperReport = (JasperReport)JRLoader.loadObject(inputStream);
-        JasperPrint jasperPrint = JasperFillManager.fillReport(inputStream, params);
-        
+    public void Generar(HttpServletResponse response, @RequestParam int idDep) throws JRException, IOException {
+        InputStream inputStream = this.getClass().getResourceAsStream("/reportes/Reporte.jasper");
+        Map<String, Object> params = new HashMap<String, Object>();
+        JasperReport jasperReport = (JasperReport) JRLoader.loadObject(inputStream);
+        JasperPrint jasperPrint = JasperFillManager.fillReport(inputStream, params, conn);
+
         response.setContentType("application/x-pdf");
         response.setHeader("Content-disposition", "inline; filename=helloWorldReport.pdf");
-        
+
         final OutputStream outputStream = response.getOutputStream();
         JasperExportManager.exportReportToPdfStream(jasperPrint, outputStream);
     }

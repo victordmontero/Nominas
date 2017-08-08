@@ -17,13 +17,13 @@
         <property name="estado" type="boolean">
             <column name="Estado" not-null="true" />
         </property>
-        <set name="empleadoses" table="Empleados" inverse="true" lazy="true" fetch="select">
+        <set name="empleadoses" table="Empleados" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="IdDepartamento" not-null="true" />
             </key>
             <one-to-many class="edu.unapec.nomina.modelos.Empleados" />
         </set>
-        <set name="empleadoDepartamentos" table="EmpleadoDepartamento" inverse="true" lazy="true" fetch="select">
+        <set name="empleadoDepartamentos" table="EmpleadoDepartamento" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="IdDepartamento" not-null="true" />
             </key>

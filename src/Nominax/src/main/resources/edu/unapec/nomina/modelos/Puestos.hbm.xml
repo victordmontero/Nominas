@@ -23,7 +23,7 @@
         <property name="estado" type="boolean">
             <column name="Estado" not-null="true" />
         </property>
-        <set name="empleadoses" table="Empleados" inverse="true" lazy="true" fetch="select">
+        <set name="empleadoses" table="Empleados" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="IdPuesto" not-null="true" />
             </key>

@@ -29,13 +29,13 @@
         <property name="estado" type="boolean">
             <column name="Estado" not-null="true" />
         </property>
-        <set name="transaccioneses" table="Transacciones" inverse="true" lazy="true" fetch="select">
+        <set name="transaccioneses" table="Transacciones" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="IdEmpleado" not-null="true" />
             </key>
             <one-to-many class="edu.unapec.nomina.modelos.Transacciones" />
         </set>
-        <set name="empleadoDepartamentos" table="EmpleadoDepartamento" inverse="true" lazy="true" fetch="select">
+        <set name="empleadoDepartamentos" table="EmpleadoDepartamento" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="IdEmpleado" not-null="true" />
             </key>
