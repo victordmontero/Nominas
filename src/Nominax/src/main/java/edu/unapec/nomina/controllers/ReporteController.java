@@ -59,14 +59,15 @@ public class ReporteController {
 
     @RequestMapping(value = {"/generar"})
     @ResponseBody
-    public void Generar(HttpServletResponse response, @RequestParam int idDep) throws JRException, IOException {
+    public void Generar(HttpServletResponse response, @RequestParam Integer idDep) throws JRException, IOException {
         InputStream inputStream = this.getClass().getResourceAsStream("/reportes/Reporte.jasper");
         Map<String, Object> params = new HashMap<String, Object>();
+        params.put("DepId", idDep);
         JasperReport jasperReport = (JasperReport) JRLoader.loadObject(inputStream);
-        JasperPrint jasperPrint = JasperFillManager.fillReport(inputStream, params, conn);
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, conn);
 
         response.setContentType("application/x-pdf");
-        response.setHeader("Content-disposition", "inline; filename=helloWorldReport.pdf");
+        response.setHeader("Content-disposition", "inline; filename=ReporteNomina.pdf");
 
         final OutputStream outputStream = response.getOutputStream();
         JasperExportManager.exportReportToPdfStream(jasperPrint, outputStream);

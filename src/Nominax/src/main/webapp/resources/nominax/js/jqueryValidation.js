@@ -103,7 +103,7 @@ $(function () {
                 required: true,
                 min: 0
             },
-            cedula:"modulo10"
+            cedula: "modulo10"
         }
     });
 
@@ -124,19 +124,23 @@ $(function () {
         Array.from(cedula).every(function (val, index, arr) {
             return !isNaN(val);
         });
-        
+
         cedula = cedula.replace("-", "").trim();
-        
+
         var temp = "";
         if (cedula.length === 11) {
             for (var i = 0; i < cedula.length; i++) {
                 temp += parseInt(cedula[i]) * (i % 2 + 1);
             }
-        }
-        
+        } else
+            return false;
+
+        console.log("temp " + temp);
+
         var sigma = Array.from(temp).reduce(function (sum, value) {
             return sum + parseInt(value);
         });
+
         return Math.abs(10 - sigma % 10) === parseInt(cedula[cedula.length - 1]);
 
     }, "Ingrese una cedula valida");

@@ -32,6 +32,7 @@
                                 <div class="form-group col-lg-6">
                                     <label for="idDep">Departamento</label>
                                     <select name="idDep" class="form-control">
+                                        <option value="">Todos los Departamentos</option>
                                         <c:forEach items="${departamentos}" var="dep">
                                             <option value="${dep.idDepartamento}">${dep.nombre}</option>
                                         </c:forEach>
