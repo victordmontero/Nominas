@@ -56,6 +56,7 @@
                                     <tr>
                                         <td><a href="<c:url value="/security/editar-usuario" />/${usuario.idUsuario}">
                                                 ${usuario.nombre}</a></td>
+                                        <td>${usuario.roleses.iterator().next().nombreRole}</td>
                                         <td>
                                             <a href="${EliminarUrl}/${usuario.idUsuario}"><i class="fa fa-trash"></i></a>
                                         </td>

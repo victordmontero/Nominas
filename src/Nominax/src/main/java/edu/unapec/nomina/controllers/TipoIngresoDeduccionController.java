@@ -31,51 +31,75 @@ public class TipoIngresoDeduccionController extends CRUDController<TipoIngresoDe
     @Override
     @RequestMapping(value = {"/", "/listar"})
     public ModelAndView listar() {
-        ModelAndView mv = new ModelAndView("tid/listar");
-        mv.addObject("tids", repositorio.ObtenerTodos());
-        return mv;
+        try {
+            ModelAndView mv = new ModelAndView("tid/listar");
+            mv.addObject("tids", repositorio.ObtenerTodos());
+            return mv;
+        } catch (Exception e) {
+            return new ModelAndView("/errorPage");
+        }
     }
 
     @RequestMapping(value = "/guardar")
     public ModelAndView guardar() {
-        HashMap<Character, String> tipos = new HashMap<Character, String>();
-        tipos.put('I', "Ingreso");
-        tipos.put('D', "Deduccion");
-        ModelAndView mv = new ModelAndView("tid/guardar");
-        mv.addObject("tipos", tipos);
-        mv.addObject("tid", new TipoIngresoDeduccion());
-        return mv;
+        try {
+            HashMap<Character, String> tipos = new HashMap<Character, String>();
+            tipos.put('I', "Ingreso");
+            tipos.put('D', "Deduccion");
+            ModelAndView mv = new ModelAndView("tid/guardar");
+            mv.addObject("tipos", tipos);
+            mv.addObject("tid", new TipoIngresoDeduccion());
+            return mv;
+        } catch (Exception e) {
+            return new ModelAndView("/errorPage");
+        }
     }
 
     @RequestMapping(value = "/guardar", method = RequestMethod.POST)
     public String guardar(TipoIngresoDeduccion tipoingresodeduccion) {
-        repositorio.Guardar(tipoingresodeduccion);
-        return "redirect:listar";
+        try {
+            repositorio.Guardar(tipoingresodeduccion);
+            return "redirect:listar";
+        } catch (Exception e) {
+            return "/errorPage";
+        }
     }
 
     @RequestMapping(value = "/editar/{id}")
     public ModelAndView editar(@PathVariable int id) {
-        HashMap<Character, String> tipos = new HashMap<Character, String>();
-        tipos.put('I', "Ingreso");
-        tipos.put('D', "Deduccion");
-        ModelAndView mv = new ModelAndView("tid/editar");
-        TipoIngresoDeduccion tipoID = repositorio.ObtenerUno(id);
-        mv.addObject("tid", tipoID);
-        mv.addObject("tipos", tipos);
-        return mv;
+        try {
+            HashMap<Character, String> tipos = new HashMap<Character, String>();
+            tipos.put('I', "Ingreso");
+            tipos.put('D', "Deduccion");
+            ModelAndView mv = new ModelAndView("tid/editar");
+            TipoIngresoDeduccion tipoID = repositorio.ObtenerUno(id);
+            mv.addObject("tid", tipoID);
+            mv.addObject("tipos", tipos);
+            return mv;
+        } catch (Exception e) {
+            return new ModelAndView("/errorPage");
+        }
     }
 
     @RequestMapping(value = "/editar", method = RequestMethod.POST)
     public String editar(TipoIngresoDeduccion tipoID) {
-        repositorio.Editar(tipoID);
-        return "redirect:listar";
+        try {
+            repositorio.Editar(tipoID);
+            return "redirect:listar";
+        } catch (Exception e) {
+            return "/errorPage";
+        }
     }
 
     @RequestMapping(value = "/eliminar/{id}")
     public String eliminar(@PathVariable int id) {
-        TipoIngresoDeduccion tipoID = repositorio.ObtenerUno(id);
-        repositorio.Eliminar(tipoID);
-        return "redirect:/tid/listar";
+        try {
+            TipoIngresoDeduccion tipoID = repositorio.ObtenerUno(id);
+            repositorio.Eliminar(tipoID);
+            return "redirect:/tid/listar";
+        } catch (Exception e) {
+            return "/errorPage";
+        }
     }
 
 }

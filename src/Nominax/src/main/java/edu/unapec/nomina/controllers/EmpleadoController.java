@@ -42,49 +42,73 @@ public class EmpleadoController extends CRUDController<Empleados> {
 
     @RequestMapping(value = {"/", "/listar"})
     public ModelAndView listar() {
-        ModelAndView mv = new ModelAndView();
-        mv.addObject("empleados", repositorio.ObtenerTodos());
-        mv.setViewName("empleados/listar");
-        return mv;
+        try {
+            ModelAndView mv = new ModelAndView();
+            mv.addObject("empleados", repositorio.ObtenerTodos());
+            mv.setViewName("empleados/listar");
+            return mv;
+        } catch (Exception e) {
+            return new ModelAndView("/errorPage");
+        }
     }
 
     @RequestMapping(value = "/guardar")
     public ModelAndView guardar() {
-        ModelAndView mv = new ModelAndView();
-        mv.addObject("empleado", new Empleados());
-        mv.addObject("puestos", repoPuestos.ObtenerTodos());
-        mv.addObject("departamentos", repoDepartamentos.ObtenerTodos());
-        mv.addObject("nominas", repoNominas.ObtenerTodos());
-        mv.setViewName("empleados/guardar");
-        return mv;
+        try {
+            ModelAndView mv = new ModelAndView();
+            mv.addObject("empleado", new Empleados());
+            mv.addObject("puestos", repoPuestos.ObtenerTodos());
+            mv.addObject("departamentos", repoDepartamentos.ObtenerTodos());
+            mv.addObject("nominas", repoNominas.ObtenerTodos());
+            mv.setViewName("empleados/guardar");
+            return mv;
+        } catch (Exception e) {
+            return new ModelAndView("/errorPage");
+        }
     }
 
     @RequestMapping(value = "/guardar", method = RequestMethod.POST)
     public String guardar(Empleados empleado) {
-        repositorio.Guardar(empleado);
-        return "redirect:listar";
+        try {
+            repositorio.Guardar(empleado);
+            return "redirect:listar";
+        } catch (Exception e) {
+            return "/errorPage";
+        }
     }
 
     @RequestMapping(value = "/editar/{id}")
     public ModelAndView editar(@PathVariable int id) {
-        ModelAndView mv = new ModelAndView();
-        mv.addObject("empleado", repositorio.ObtenerUno(id));
-        mv.addObject("puestos", repoPuestos.ObtenerTodos());
-        mv.addObject("departamentos", repoDepartamentos.ObtenerTodos());
-        mv.addObject("nominas", repoNominas.ObtenerTodos());
-        mv.setViewName("empleados/editar");
-        return mv;
+        try {
+            ModelAndView mv = new ModelAndView();
+            mv.addObject("empleado", repositorio.ObtenerUno(id));
+            mv.addObject("puestos", repoPuestos.ObtenerTodos());
+            mv.addObject("departamentos", repoDepartamentos.ObtenerTodos());
+            mv.addObject("nominas", repoNominas.ObtenerTodos());
+            mv.setViewName("empleados/editar");
+            return mv;
+        } catch (Exception e) {
+            return new ModelAndView("/errorPage");
+        }
     }
 
     @RequestMapping(value = "/editar", method = RequestMethod.POST)
     public String editar(Empleados empleados) {
-        repositorio.Editar(empleados);
-        return "redirect:listar";
+        try {
+            repositorio.Editar(empleados);
+            return "redirect:listar";
+        } catch (Exception e) {
+            return "/errorPage";
+        }
     }
 
     @RequestMapping(value = "/eliminar/{id}")
     public String eliminar(@PathVariable int id) {
-        repositorio.Eliminar(repositorio.ObtenerUno(id));
-        return "redirect:/empleados/listar";
+        try {
+            repositorio.Eliminar(repositorio.ObtenerUno(id));
+            return "redirect:/empleados/listar";
+        } catch (Exception e) {
+            return "/erroPage";
+        }
     }
 }

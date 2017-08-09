@@ -35,22 +35,22 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Controller
 @RequestMapping(value = "/security")
 public class SecurityController {
-    
+
     IRepositorio<Usuario> repo;
-    
+
     @Autowired
     RepositorioRoles repoRoles;
-    
+
     @Autowired
     public SecurityController(IRepositorio<Usuario> repositorio) {
         this.repo = repositorio;
     }
-    
+
     @RequestMapping(value = "/signin", method = RequestMethod.GET)
     public String signin() {
         return "security/login";
     }
-    
+
     @RequestMapping(value = "/signout")
     public String signout(HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -59,85 +59,109 @@ public class SecurityController {
         }
         return "redirect:/security/signin?signout";
     }
-    
+
     @RequestMapping(value = "/denied")
     public String denied() {
         return "security/denied";
     }
-    
-    @RequestMapping(value = {"/","/listar-usuarios"})
+
+    @RequestMapping(value = {"/", "/listar-usuarios"})
     public String listarUsuarios(ModelMap model) {
-        List<Usuario> usuarios = repo.ObtenerTodos();
-        model.addAttribute("usuarios", usuarios);
-        return "security/listarUsuarios";
+        try {
+            List<Usuario> usuarios = repo.ObtenerTodos();
+            model.addAttribute("usuarios", usuarios);
+            return "security/listarUsuarios";
+        } catch (Exception e) {
+            return "/errorPage";
+        }
     }
-    
+
     @RequestMapping(value = "/nuevo-usuario")
     public String nuevoUsuario(ModelMap model) {
-        Usuario u = new Usuario();
-        model.addAttribute("usuario", u);
-        model.addAttribute("roles", repoRoles.ObtenerTodos());
-        return "security/guardarUsuario";
+        try {
+            Usuario u = new Usuario();
+            model.addAttribute("usuario", u);
+            model.addAttribute("roles", repoRoles.ObtenerTodos());
+            return "security/guardarUsuario";
+        } catch (Exception e) {
+            return "/errorPage";
+        }
     }
-    
+
     @RequestMapping(value = "/nuevo-usuario", method = RequestMethod.POST)
     public String nuevoUsuario(@Valid Usuario u, BindingResult result, ModelMap map) {
-        PasswordEncoder encoder = new BCryptPasswordEncoder(11);
-        
-        if (result.hasErrors()) {
+        try {
+            PasswordEncoder encoder = new BCryptPasswordEncoder(11);
+
+            if (result.hasErrors()) {
+                return "redirect:/security/listar-usuarios";
+            }
+
+            u.setPassword(encoder.encode(u.getPassword()));
+            repo.Guardar(u);
+
             return "redirect:/security/listar-usuarios";
+        } catch (Exception e) {
+            return "/errorPage";
         }
-        
-        u.setPassword(encoder.encode(u.getPassword()));
-        repo.Guardar(u);
-        
-        return "redirect:/security/listar-usuarios";
     }
-    
+
     @RequestMapping(value = "/editar-usuario/{id}")
     public String editarUsuario(@PathVariable int id, ModelMap model) {
-        Usuario usuario = repo.ObtenerUno(id);
-        usuario.setRoleses(null);
-        usuario.setPassword(null);
-        model.addAttribute("usuario", usuario);
-        model.addAttribute("roles", repoRoles.ObtenerTodos());
-        return "security/editarUsuario";
+        try {
+            Usuario usuario = repo.ObtenerUno(id);
+            usuario.setRoleses(null);
+            usuario.setPassword(null);
+            model.addAttribute("usuario", usuario);
+            model.addAttribute("roles", repoRoles.ObtenerTodos());
+            return "security/editarUsuario";
+        } catch (Exception e) {
+            return "/errorPage";
+        }
     }
-    
+
     @RequestMapping(value = "/editar-usuario", method = RequestMethod.POST)
     public String editarUsuario(@Valid Usuario u,
             BindingResult result, ModelMap map) {
-        PasswordEncoder encoder = new BCryptPasswordEncoder(11);
-        
-        if (result.hasErrors()) {
-            return "security/editarUsuario";
+        try {
+            PasswordEncoder encoder = new BCryptPasswordEncoder(11);
+
+            if (result.hasErrors()) {
+                return "security/editarUsuario";
+            }
+
+            u.setPassword(encoder.encode(u.getPassword()));
+
+            String var = (String) u.getRoleses().toArray()[0];
+            Roles r = repoRoles.ObtenerUno(Integer.parseInt(var));
+            Set<Roles> set = new HashSet<Roles>();
+            set.add(r);
+
+            u.setRoleses(set);
+
+            repo.Editar(u);
+            return "redirect:/security/listar-usuarios";
+        } catch (Exception e) {
+            return "/errorPage";
         }
-        
-        u.setPassword(encoder.encode(u.getPassword()));
-        
-        String var = (String) u.getRoleses().toArray()[0];
-        Roles r = repoRoles.ObtenerUno(Integer.parseInt(var));
-        Set<Roles> set = new HashSet<Roles>();
-        set.add(r);
-        
-        u.setRoleses(set);
-        
-        repo.Editar(u);
-        return "redirect:/security/listar-usuarios";
     }
-    
+
     @RequestMapping(value = "/eliminar-usuario/{id}")
     public String eliminarUsuario(@PathVariable int id) {
-        repo.Eliminar(repo.ObtenerUno(id));
-        return "redirect:/security/listar-usuarios";
+        try {
+            repo.Eliminar(repo.ObtenerUno(id));
+            return "redirect:/security/listar-usuarios";
+        } catch (Exception e) {
+            return "/errorPage";
+        }
     }
-    
+
     public RepositorioRoles getRepoRoles() {
         return repoRoles;
     }
-    
+
     public void setRepoRoles(RepositorioRoles repoRoles) {
         this.repoRoles = repoRoles;
     }
-    
+
 }

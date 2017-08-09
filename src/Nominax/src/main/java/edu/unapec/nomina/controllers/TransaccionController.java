@@ -38,28 +38,40 @@ public class TransaccionController extends CRUDController<Transacciones> {
     @Override
     @RequestMapping(value = {"/", "/listar"})
     public ModelAndView listar() {
-        ModelAndView mv = new ModelAndView("transacciones/listar");
-        mv.addObject("transacciones", repositorio.ObtenerTodos());
-        return mv;
+        try {
+            ModelAndView mv = new ModelAndView("transacciones/listar");
+            mv.addObject("transacciones", repositorio.ObtenerTodos());
+            return mv;
+        } catch (Exception e) {
+            return new ModelAndView("/errorPage");
+        }
     }
 
     @Override
     @RequestMapping(value = "/nueva")
     public ModelAndView guardar() {
-        ModelAndView mv = new ModelAndView("transacciones/nueva");
-        Transacciones tx = new Transacciones();
-        tx.setFecha(new Date());
-        mv.addObject("transaccion", tx);
-        mv.addObject("empleados", repoEmp.ObtenerTodos());
-        mv.addObject("tids", repoTid.ObtenerTodos());
-        return mv;
+        try {
+            ModelAndView mv = new ModelAndView("transacciones/nueva");
+            Transacciones tx = new Transacciones();
+            tx.setFecha(new Date());
+            mv.addObject("transaccion", tx);
+            mv.addObject("empleados", repoEmp.ObtenerTodos());
+            mv.addObject("tids", repoTid.ObtenerTodos());
+            return mv;
+        } catch (Exception e) {
+            return new ModelAndView("/errorPage");
+        }
     }
 
     @Override
     @RequestMapping(value = "/nueva", method = RequestMethod.POST)
     public String guardar(Transacciones model) {
-        repositorio.Guardar(model);
-        return "redirect:listar";
+        try {
+            repositorio.Guardar(model);
+            return "redirect:listar";
+        } catch (Exception e) {
+            return "/errorPage";
+        }
     }
 
     @Override

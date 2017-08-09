@@ -25,6 +25,8 @@
                     </div>
                     <div class="panel-body">
                         <mvc:form modelAttribute="empdep" action="/Nominax/empdep/editar" method="POST">
+                            <input type="hidden" name="EmpId" value="${empdep.id.idEmpleado}"/>
+                            <input type="hidden" name="DepId" value="${empdep.id.idDepartamento}"/>
                             <div class="row">
                                 <div class="form-group col-lg-6">
                                     <mvc:label path="id.idEmpleado">Empleado</mvc:label>

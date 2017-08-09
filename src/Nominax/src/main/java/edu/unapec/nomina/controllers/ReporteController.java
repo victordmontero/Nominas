@@ -52,9 +52,13 @@ public class ReporteController {
 
     @RequestMapping(value = {"/"})
     public ModelAndView Generar() {
-        ModelAndView mv = new ModelAndView("reporte/generar");
-        mv.addObject("departamentos", repoDep.ObtenerTodos());
-        return mv;
+        try {
+            ModelAndView mv = new ModelAndView("reporte/generar");
+            mv.addObject("departamentos", repoDep.ObtenerTodos());
+            return mv;
+        } catch (Exception e) {
+            return new ModelAndView("/errorPage");
+        }
     }
 
     @RequestMapping(value = {"/generar"})

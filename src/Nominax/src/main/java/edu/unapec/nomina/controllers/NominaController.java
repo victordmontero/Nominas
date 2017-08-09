@@ -31,46 +31,70 @@ public class NominaController extends CRUDController<Nominas> {
     @Override
     @RequestMapping(value = {"/", "/listar"})
     public ModelAndView listar() {
-        HashMap<String, Object> mapa = new HashMap<String, Object>();
-        mapa.put("nominas", repositorio.ObtenerTodos());
-        return new ModelAndView("nominas/listar", mapa);
+        try {
+            HashMap<String, Object> mapa = new HashMap<String, Object>();
+            mapa.put("nominas", repositorio.ObtenerTodos());
+            return new ModelAndView("nominas/listar", mapa);
+        } catch (Exception e) {
+            return new ModelAndView("/errorPage");
+        }
     }
 
     @Override
     @RequestMapping(value = "/guardar")
     public ModelAndView guardar() {
-        ModelAndView mv = new ModelAndView("nominas/guardar");
-        mv.addObject("nomina", new Nominas());
-        return mv;
+        try {
+            ModelAndView mv = new ModelAndView("nominas/guardar");
+            mv.addObject("nomina", new Nominas());
+            return mv;
+        } catch (Exception e) {
+            return new ModelAndView("/errorPage");
+        }
     }
 
     @Override
     @RequestMapping(value = "/guardar", method = RequestMethod.POST)
     public String guardar(Nominas model) {
-        repositorio.Guardar(model);
-        return "redirect:listar";
+        try {
+            repositorio.Guardar(model);
+            return "redirect:listar";
+        } catch (Exception e) {
+            return "/errorPage";
+        }
     }
 
     @Override
     @RequestMapping(value = "/editar/{id}")
     public ModelAndView editar(@PathVariable int id) {
-        ModelAndView mv = new ModelAndView("nominas/editar");
-        mv.addObject("nomina", repositorio.ObtenerUno(id));
-        return mv;
+        try {
+            ModelAndView mv = new ModelAndView("nominas/editar");
+            mv.addObject("nomina", repositorio.ObtenerUno(id));
+            return mv;
+        } catch (Exception e) {
+            return new ModelAndView("/errorPage");
+        }
     }
 
     @Override
     @RequestMapping(value = "/editar", method = RequestMethod.POST)
     public String editar(Nominas model) {
-        repositorio.Editar(model);
-        return "redirect:listar";
+        try {
+            repositorio.Editar(model);
+            return "redirect:listar";
+        } catch (Exception e) {
+            return "/errorPage";
+        }
     }
 
     @Override
     @RequestMapping(value = "/eliminar/{id}")
     public String eliminar(@PathVariable int id) {
-        repositorio.Eliminar(repositorio.ObtenerUno(id));
-        return "redirect:/nominas/listar";
+        try {
+            repositorio.Eliminar(repositorio.ObtenerUno(id));
+            return "redirect:/nominas/listar";
+        } catch (Exception e) {
+            return "/errorPage";
+        }
     }
 
 }
